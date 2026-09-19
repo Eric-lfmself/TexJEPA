@@ -1,0 +1,6 @@
+condition,auroc,drop,drift,evidence,dataset_type,source_pdf,source_pdf_page,source_table
+Clean,0.910,,,paper_reported,aggregate_experimental_results,texjepa-manuscript,7,VI
+Low-pass cutoff 0.15,0.670,-0.240,0.437,paper_reported,aggregate_experimental_results,texjepa-manuscript,7,VI
+Band corrupt 0.00–0.20,0.847,-0.063,0.110,paper_reported,aggregate_experimental_results,texjepa-manuscript,7,VI
+Band corrupt 0.20–0.45,0.594,-0.317,0.752,paper_reported,aggregate_experimental_results,texjepa-manuscript,7,VI
+Band corrupt 0.45–1.00,0.618,-0.292,0.622,paper_reported,aggregate_experimental_results,texjepa-manuscript,7,VI

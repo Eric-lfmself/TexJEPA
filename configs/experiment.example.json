@@ -1,0 +1,289 @@
+{
+  "schema_version": 1,
+  "runtime": {
+    "device": "cuda:0",
+    "profile": "experiment",
+    "batch_size": 32,
+    "num_workers": 0,
+    "seed": 42,
+    "num_threads": 1,
+    "output_dir": "../outputs/experiment"
+  },
+  "data": {
+    "manifest": "/srv/texjepa/manifests/vindr.json",
+    "image_root": "/srv/texjepa/vindr",
+    "image_size": 224,
+    "intensity": {
+      "policy": "uint8",
+      "scale": null
+    },
+    "split": {
+      "path": "/srv/texjepa/manifests/vindr_split.json",
+      "train_size": 12000,
+      "test_size": 3000,
+      "seed": 42
+    },
+    "unlabeled_manifest": "/srv/texjepa/manifests/mimic_unlabeled.json",
+    "unlabeled_root": "/srv/texjepa/mimic"
+  },
+  "models": [
+    {
+      "name": "I-JEPA-H/300",
+      "group": "main",
+      "backbone": {
+        "recipe": "ijepa_huge_patch14",
+        "repo_path": "/srv/texjepa/code/ijepa",
+        "trust_local_code": true,
+        "image_size": 224,
+        "normalization": {
+          "mean": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "std": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "checkpoint": {
+          "path": "/srv/texjepa/checkpoints/ijepa_300.pt",
+          "state_key": "encoder",
+          "strip_prefix": "module."
+        }
+      },
+      "provenance": {
+        "source": "user_supplied_local_checkpoint",
+        "historical_experiment_match_verified": false,
+        "note": "Replace artifact path/state container/prefix with the actual local checkpoint contract. Identity normalization is an explicit unverified example, not recovered paper preprocessing."
+      }
+    },
+    {
+      "name": "MAE-H/300",
+      "group": "main",
+      "backbone": {
+        "recipe": "mae_huge_patch14",
+        "repo_path": "/srv/texjepa/code/mae",
+        "trust_local_code": true,
+        "image_size": 224,
+        "normalization": {
+          "mean": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "std": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "checkpoint": {
+          "path": "/srv/texjepa/checkpoints/mae_300.pt",
+          "state_key": "model",
+          "strip_prefix": ""
+        }
+      },
+      "provenance": {
+        "source": "user_supplied_local_checkpoint",
+        "historical_experiment_match_verified": false,
+        "note": "Replace artifact path/state container/prefix with the actual local checkpoint contract. Identity normalization is an explicit unverified example, not recovered paper preprocessing."
+      }
+    },
+    {
+      "name": "I-JEPA-H/95",
+      "group": "historical",
+      "backbone": {
+        "recipe": "ijepa_huge_patch14",
+        "repo_path": "/srv/texjepa/code/ijepa",
+        "trust_local_code": true,
+        "image_size": 224,
+        "normalization": {
+          "mean": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "std": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "checkpoint": {
+          "path": "/srv/texjepa/checkpoints/ijepa_95.pt",
+          "state_key": "encoder",
+          "strip_prefix": "module."
+        }
+      },
+      "provenance": {
+        "source": "user_supplied_local_checkpoint",
+        "historical_experiment_match_verified": false,
+        "note": "Replace artifact path/state container/prefix with the actual local checkpoint contract. Identity normalization is an explicit unverified example, not recovered paper preprocessing."
+      }
+    },
+    {
+      "name": "I-JEPA-H/201",
+      "group": "historical",
+      "backbone": {
+        "recipe": "ijepa_huge_patch14",
+        "repo_path": "/srv/texjepa/code/ijepa",
+        "trust_local_code": true,
+        "image_size": 224,
+        "normalization": {
+          "mean": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "std": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "checkpoint": {
+          "path": "/srv/texjepa/checkpoints/ijepa_201.pt",
+          "state_key": "encoder",
+          "strip_prefix": "module."
+        }
+      },
+      "provenance": {
+        "source": "user_supplied_local_checkpoint",
+        "historical_experiment_match_verified": false,
+        "note": "Replace artifact path/state container/prefix with the actual local checkpoint contract. Identity normalization is an explicit unverified example, not recovered paper preprocessing."
+      }
+    },
+    {
+      "name": "MAE-H/97",
+      "group": "historical",
+      "backbone": {
+        "recipe": "mae_huge_patch14",
+        "repo_path": "/srv/texjepa/code/mae",
+        "trust_local_code": true,
+        "image_size": 224,
+        "normalization": {
+          "mean": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "std": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "checkpoint": {
+          "path": "/srv/texjepa/checkpoints/mae_97.pt",
+          "state_key": "model",
+          "strip_prefix": ""
+        }
+      },
+      "provenance": {
+        "source": "user_supplied_local_checkpoint",
+        "historical_experiment_match_verified": false,
+        "note": "Replace artifact path/state container/prefix with the actual local checkpoint contract. Identity normalization is an explicit unverified example, not recovered paper preprocessing."
+      }
+    },
+    {
+      "name": "EVA-X-B/300",
+      "group": "external",
+      "backbone": {
+        "recipe": "eva_x_base_patch16",
+        "repo_path": "/srv/texjepa/code/eva_x",
+        "trust_local_code": true,
+        "image_size": 224,
+        "normalization": {
+          "mean": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "std": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "checkpoint": {
+          "path": "/srv/texjepa/checkpoints/eva_x_base.pt",
+          "state_key": "model",
+          "strip_prefix": "",
+          "conversion": "eva_x_official"
+        }
+      },
+      "provenance": {
+        "source": "user_supplied_local_checkpoint",
+        "historical_experiment_match_verified": false,
+        "note": "Replace artifact path/state container/prefix with the actual local checkpoint contract. Identity normalization is an explicit unverified example, not recovered paper preprocessing."
+      }
+    },
+    {
+      "name": "RAD-DINO-B/300",
+      "group": "external",
+      "backbone": {
+        "recipe": "rad_dino",
+        "image_size": 224,
+        "model_path": "/srv/texjepa/checkpoints/rad-dino",
+        "normalization": {
+          "mean": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "std": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "provenance": {
+        "source": "user_supplied_local_RAD_DINO_snapshot",
+        "historical_experiment_match_verified": false,
+        "note": "Common 224px and identity normalization are explicit example choices; verify historical preprocessing before interpreting comparisons."
+      }
+    }
+  ],
+  "protocols": [
+    "linear",
+    "mlp",
+    "partial_ft"
+  ],
+  "post_training": {
+    "enabled": true,
+    "variants": [
+      "v4",
+      "v5",
+      "v6"
+    ],
+    "baseline_checkpoint": "/srv/texjepa/checkpoints/native_ijepa/epoch_0201.pt",
+    "epochs": {
+      "v4": 300,
+      "v5": 300,
+      "v6": 300
+    },
+    "normalization": {
+      "mean": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "std": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    "training": {
+      "learning_rate": 0.001,
+      "weight_decay": 0.0001,
+      "checkpoint_every": 1
+    }
+  },
+  "report": {
+    "figures": true
+  }
+}

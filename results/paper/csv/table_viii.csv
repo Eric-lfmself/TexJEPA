@@ -1,0 +1,6 @@
+model,delta_lesion,ci95_lower,ci95_upper,evidence,dataset_type,source_pdf,source_pdf_page,source_table
+I-JEPA-H/300,0.222,0.199,0.247,paper_reported,aggregate_experimental_results,texjepa-manuscript,8,VIII
+I-JEPA-H/201,0.195,0.167,0.223,paper_reported,aggregate_experimental_results,texjepa-manuscript,8,VIII
+I-JEPA-H/95,0.190,0.161,0.220,paper_reported,aggregate_experimental_results,texjepa-manuscript,8,VIII
+MAE-H/97,0.066,0.053,0.078,paper_reported,aggregate_experimental_results,texjepa-manuscript,8,VIII
+MAE-H/300,0.039,0.025,0.053,paper_reported,aggregate_experimental_results,texjepa-manuscript,8,VIII

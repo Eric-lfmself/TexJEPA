@@ -1,0 +1,25 @@
+.venv/
+__pycache__/
+.pytest_cache/
+*.py[cod]
+.DS_Store
+*.egg-info/
+outputs/
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.dcm
+*.dicom
+.env
+.env.*
+build/
+dist/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# Keep manuscript files outside the public repository.
+/paper/
+TexJEPA_BIBM.pdf

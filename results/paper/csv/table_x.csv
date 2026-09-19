@@ -1,0 +1,8 @@
+model,sigma_0_05,sigma_0_10,sigma_0_20,sigma_0_30,evidence,dataset_type,source_pdf,source_pdf_page,source_table
+v3.1 (Baseline),0.872,0.963,0.957,0.956,paper_reported,aggregate_experimental_results,texjepa-manuscript,9,X
+v4 (+noise),0.017,0.049,0.489,0.777,paper_reported,aggregate_experimental_results,texjepa-manuscript,9,X
+v5 (+reg),0.016,0.052,0.781,0.811,paper_reported,aggregate_experimental_results,texjepa-manuscript,9,X
+v6 (+vicreg),0.010,0.017,0.064,0.212,paper_reported,aggregate_experimental_results,texjepa-manuscript,9,X
+MAE-H/300,0.169,0.319,0.339,0.337,paper_reported,aggregate_experimental_results,texjepa-manuscript,9,X
+EVA-X-B/300,0.125,0.237,0.285,0.299,paper_reported,aggregate_experimental_results,texjepa-manuscript,9,X
+RAD-DINO-B/300,0.164,0.464,0.701,0.711,paper_reported,aggregate_experimental_results,texjepa-manuscript,9,X

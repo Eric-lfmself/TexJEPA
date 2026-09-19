@@ -1,0 +1,11 @@
+{
+  "project": "TexJEPA diagnostic framework",
+  "runtime": {"device": "cpu", "dry_run": false, "use_random_init": false, "batch_size": 4, "seed": 42, "num_threads": 1},
+  "model": {"mini": false, "image_size": 224, "patch_size": 14, "in_channels": 3, "embed_dim": 1280, "depth": 32, "num_heads": 16, "predictor_dim": 384, "predictor_depth": 12, "num_register_tokens": 0},
+  "data": {"source": "local_manifest", "num_classes": 15, "train_size": 12000, "test_size": 3000, "split_seed": 42, "smoke_samples": 8, "class_names": null, "manifest": null},
+  "probing": {"protocol": "linear", "linear_epochs": 100, "mlp_epochs": 100, "partial_ft_epochs": 15, "smoke_epochs": 1, "hidden_dim": 512, "dropout": 0.1, "head_lr": 0.01, "encoder_lr": 0.0001, "momentum": 0.9, "weight_decay": 0.0001},
+  "perturbations": {"gaussian_noise": [0.05, 0.10, 0.20, 0.30], "gaussian_blur": [0.5, 1.0, 2.0], "brightness_shift": [-0.2, -0.1, 0.1, 0.2], "contrast_scaling": [0.5, 0.75, 1.25, 1.5], "low_pass_cutoff": 0.15, "frequency_bands": [[0.0, 0.2], [0.2, 0.45], [0.45, 1.0]], "frequency_normalization": "corner_nyquist", "band_modes": ["stop", "pass"]},
+  "lesion": {"controls": 5, "fill": 0.5, "bootstrap_replicates": 2000, "confidence": 0.95, "seed": 42},
+  "post_training": {"mode": "noise", "warm_start": "I-JEPA-H/201", "v5_v6_parent": "v4", "v5_v6_parent_epoch": 50, "lambda_var": 1.0, "lambda_cov": 0.04, "register_tokens": 4, "context_scale": [0.85, 1.0], "register_context_scale": [0.65, 0.85], "target_blocks": 4, "register_target_blocks": 6, "target_aspect": [0.75, 1.5], "register_target_aspect": [0.5, 2.0], "target_scale": [0.15, 0.2], "gaussian_sigma": 0.05, "poisson_rate": 30.0, "jpeg_quality": 75},
+  "nca": {"hidden_dim": 32, "learning_rate": 0.001, "feature_weight": 1.0, "prediction_weight": 1.0, "supervised_weight": 1.0}
+}

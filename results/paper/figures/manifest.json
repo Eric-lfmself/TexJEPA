@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "evidence": "paper_reported",
+  "source": "results/paper/tables.json",
+  "source_sha256": "1d87589d9376c4d30aa290f5ae711d3788d110ea1278ba1ba8ff2e21bac139a8",
+  "transformations": [
+    "Select the named source tables.",
+    "Draw lines through reported noise levels.",
+    "Render Table VIII confidence intervals as horizontal error bars."
+  ],
+  "unreported_values": "We do not estimate missing values or add confidence intervals to Table XI.",
+  "figures": [
+    {
+      "file": "main_results.png",
+      "sha256": "ee129564f39ac58bfafd6a999a64c90923bca0b292b2e4213d35540da3836db5"
+    },
+    {
+      "file": "main_results.pdf",
+      "sha256": "0faab9f5012893eb294c9281cdeaa230a798c78c5e2c3a209ad90f12245e1d55"
+    },
+    {
+      "file": "main_results.svg",
+      "sha256": "a3562b1fb9d4c5ec3679c4b1376d33cf8e7a1ae5cdf49a1b4fdc05e6612ceff1"
+    },
+    {
+      "file": "post_training_results.png",
+      "sha256": "6b40acc45d9e98756686f493bc8a4cb26a7b1fd7ef93472ff0e6aba1b9c3f229"
+    },
+    {
+      "file": "post_training_results.pdf",
+      "sha256": "459c55686abbcc981389fb5929daa73e4b23894a37c79ae09a4aa13ede50b98f"
+    },
+    {
+      "file": "post_training_results.svg",
+      "sha256": "ed9eedfa25a5f3dd530305bb9dd1dd47c8b6b63b9bbc10147a225979a3319b4d"
+    }
+  ]
+}

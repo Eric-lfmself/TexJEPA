@@ -1,0 +1,7 @@
+axis,measurement,purpose,evidence,dataset_type,source_pdf,source_pdf_page,source_table
+Clean utility,Macro AUROC,Standard downstream accuracy,paper_reported,aggregate_experimental_results,texjepa-manuscript,3,I
+Perturbation robustness,AUROC under noise and frequency corruption,Prediction stability,paper_reported,aggregate_experimental_results,texjepa-manuscript,3,I
+Feature stability,Cosine representation drift,Encoder-level sensitivity,paper_reported,aggregate_experimental_results,texjepa-manuscript,3,I
+Lesion sensitivity,Delta Logit Drop,Use of annotated pathology,paper_reported,aggregate_experimental_results,texjepa-manuscript,3,I
+Adaptability,MLP and partial fine-tuning,Head vs. encoder diagnosis,paper_reported,aggregate_experimental_results,texjepa-manuscript,3,I
+Post-training,v4/v5/v6 comparison,Robustness–semantics trade-off,paper_reported,aggregate_experimental_results,texjepa-manuscript,3,I

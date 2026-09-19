@@ -1,0 +1,4 @@
+intervention,observed_behavior,interpretation,evidence,dataset_type,source_pdf,source_pdf_page,source_table
+Token drift,Noise changes many tokens; lesion occlusion is more localized,I-JEPA combines local lesion sensitivity with global noise instability,paper_reported,aggregate_experimental_results,texjepa-manuscript,11,XIII
+Input smoothing,Helps only slightly under very light noise,Fragility is not solved by simple denoising and may overlap with lesion texture,paper_reported,aggregate_experimental_results,texjepa-manuscript,11,XIII
+Consistency adapter,Aligns noisy features but can reduce clean I-JEPA performance,Downstream smoothing suppresses discriminative lesion directions,paper_reported,aggregate_experimental_results,texjepa-manuscript,11,XIII

@@ -1,0 +1,529 @@
+{
+  "schema_version": "1.0.0",
+  "publication_status": "unsubmitted_manuscript",
+  "evidence": "paper_reported",
+  "dataset_type": "aggregate_experimental_results",
+  "source": {
+    "path": "texjepa-manuscript",
+    "availability": "not_distributed",
+    "title": "When Texture Becomes the World: Texture-aware JEPA for Chest X-ray Representation Learning",
+    "sha256": "ca4a03a5f94dbb5b60396f76834d68d54b39eb760e73ef2d02c913dd74dc9ab7",
+    "pdf_pages": 13
+  },
+  "scope": "Printed numeric annotations in the Figure 7 heatmap, values explicitly written in Section V.I, and the Figure 8 caption smoothing range; kept separate from Tables I-XIII. No curve positions are digitized.",
+  "record_count": 26,
+  "records": [
+    {
+      "id": "nca_ijepa_drift",
+      "model": "I-JEPA-H/300 + NCA",
+      "metric": "cosine_drift",
+      "value": 0.01,
+      "reported": "approximately 0.01",
+      "precision": "approximate",
+      "unit": "cosine drift",
+      "condition": "across tested noise levels; no individual sigma assigned",
+      "class_name": null,
+      "evidence": "paper_reported",
+      "dataset_type": "aggregate_experimental_results",
+      "source": {
+        "path": "texjepa-manuscript",
+        "pdf_page": 10,
+        "location": "Section V.I, Why Simple Downstream Fixes Are Insufficient"
+      },
+      "notes": "These values describe the NCA experiment. We retain approximate wording and do not substitute its raw-encoder drift values for Tables V or VII. The Figure 8 caption on page 12 also presents the NCA values approximately and rounds clean NCA AUROC to about 0.88."
+    },
+    {
+      "id": "nca_ijepa_raw_drift_005",
+      "model": "I-JEPA-H/300 raw encoder (NCA experiment)",
+      "metric": "cosine_drift",
+      "value": 0.46,
+      "reported": "0.46",
+      "precision": "contextually_approximate",
+      "unit": "cosine drift",
+      "condition": "Gaussian noise σ=0.05",
+      "class_name": null,
+      "evidence": "paper_reported",
+      "dataset_type": "aggregate_experimental_results",
+      "source": {
+        "path": "texjepa-manuscript",
+        "pdf_page": 10,
+        "location": "Section V.I, Why Simple Downstream Fixes Are Insufficient"
+      },
+      "notes": "These values describe the NCA experiment. We retain approximate wording and do not substitute its raw-encoder drift values for Tables V or VII. The Figure 8 caption on page 12 also presents the NCA values approximately and rounds clean NCA AUROC to about 0.88."
+    },
+    {
+      "id": "nca_ijepa_raw_drift_010",
+      "model": "I-JEPA-H/300 raw encoder (NCA experiment)",
+      "metric": "cosine_drift",
+      "value": 0.6,
+      "reported": "0.60",
+      "precision": "contextually_approximate",
+      "unit": "cosine drift",
+      "condition": "Gaussian noise σ=0.10",
+      "class_name": null,
+      "evidence": "paper_reported",
+      "dataset_type": "aggregate_experimental_results",
+      "source": {
+        "path": "texjepa-manuscript",
+        "pdf_page": 10,
+        "location": "Section V.I, Why Simple Downstream Fixes Are Insufficient"
+      },
+      "notes": "These values describe the NCA experiment. We retain approximate wording and do not substitute its raw-encoder drift values for Tables V or VII. The Figure 8 caption on page 12 also presents the NCA values approximately and rounds clean NCA AUROC to about 0.88."
+    },
+    {
+      "id": "nca_ijepa_before_005",
+      "model": "I-JEPA-H/300 before NCA",
+      "metric": "macro_auroc",
+      "value": 0.641,
+      "reported": "0.641",
+      "precision": "reported_3_decimal_places",
+      "unit": "macro AUROC",
+      "condition": "Gaussian noise σ=0.05",
+      "class_name": null,
+      "evidence": "paper_reported",
+      "dataset_type": "aggregate_experimental_results",
+      "source": {
+        "path": "texjepa-manuscript",
+        "pdf_page": 10,
+        "location": "Section V.I, Why Simple Downstream Fixes Are Insufficient"
+      },
+      "notes": "These values describe the NCA experiment. We retain approximate wording and do not substitute its raw-encoder drift values for Tables V or VII. The Figure 8 caption on page 12 also presents the NCA values approximately and rounds clean NCA AUROC to about 0.88."
+    },
+    {
+      "id": "nca_ijepa_after_005",
+      "model": "I-JEPA-H/300 + NCA",
+      "metric": "macro_auroc",
+      "value": 0.88,
+      "reported": "approximately 0.88",
+      "precision": "approximate",
+      "unit": "macro AUROC",
+      "condition": "Gaussian noise σ=0.05",
+      "class_name": null,
+      "evidence": "paper_reported",
+      "dataset_type": "aggregate_experimental_results",
+      "source": {
+        "path": "texjepa-manuscript",
+        "pdf_page": 10,
+        "location": "Section V.I, Why Simple Downstream Fixes Are Insufficient"
+      },
+      "notes": "These values describe the NCA experiment. We retain approximate wording and do not substitute its raw-encoder drift values for Tables V or VII. The Figure 8 caption on page 12 also presents the NCA values approximately and rounds clean NCA AUROC to about 0.88."
+    },
+    {
+      "id": "nca_ijepa_before_clean",
+      "model": "I-JEPA-H/300 before NCA",
+      "metric": "macro_auroc",
+      "value": 0.91,
+      "reported": "0.910",
+      "precision": "reported_3_decimal_places",
+      "unit": "macro AUROC",
+      "condition": "clean",
+      "class_name": null,
+      "evidence": "paper_reported",
+      "dataset_type": "aggregate_experimental_results",
+      "source": {
+        "path": "texjepa-manuscript",
+        "pdf_page": 10,
+        "location": "Section V.I, Why Simple Downstream Fixes Are Insufficient"
+      },
+      "notes": "These values describe the NCA experiment. We retain approximate wording and do not substitute its raw-encoder drift values for Tables V or VII. The Figure 8 caption on page 12 also presents the NCA values approximately and rounds clean NCA AUROC to about 0.88."
+    },
+    {
+      "id": "nca_ijepa_after_clean",
+      "model": "I-JEPA-H/300 + NCA",
+      "metric": "macro_auroc",
+      "value": 0.875,
+      "reported": "about 0.875",
+      "precision": "approximate",
+      "unit": "macro AUROC",
+      "condition": "clean",
+      "class_name": null,
+      "evidence": "paper_reported",
+      "dataset_type": "aggregate_experimental_results",
+      "source": {
+        "path": "texjepa-manuscript",
+        "pdf_page": 10,
+        "location": "Section V.I, Why Simple Downstream Fixes Are Insufficient"
+      },
+      "notes": "These values describe the NCA experiment. We retain approximate wording and do not substitute its raw-encoder drift values for Tables V or VII. The Figure 8 caption on page 12 also presents the NCA values approximately and rounds clean NCA AUROC to about 0.88."
+    },
+    {
+      "id": "nca_mae_after_clean",
+      "model": "MAE-H/300 + NCA",
+      "metric": "macro_auroc",
+      "value": 0.922,
+      "reported": "roughly 0.922",
+      "precision": "approximate",
+      "unit": "macro AUROC",
+      "condition": "clean",
+      "class_name": null,
+      "evidence": "paper_reported",
+      "dataset_type": "aggregate_experimental_results",
+      "source": {
+        "path": "texjepa-manuscript",
+        "pdf_page": 10,
+        "location": "Section V.I, Why Simple Downstream Fixes Are Insufficient"
+      },
+      "notes": "These values describe the NCA experiment. We retain approximate wording and do not substitute its raw-encoder drift values for Tables V or VII. The Figure 8 caption on page 12 also presents the NCA values approximately and rounds clean NCA AUROC to about 0.88."
+    },
+    {
+      "id": "nca_mae_after_005",
+      "model": "MAE-H/300 + NCA",
+      "metric": "macro_auroc",
+      "value": 0.91,
+      "reported": "about 0.91",
+      "precision": "approximate",
+      "unit": "macro AUROC",
+      "condition": "Gaussian noise σ=0.05",
+      "class_name": null,
+      "evidence": "paper_reported",
+      "dataset_type": "aggregate_experimental_results",
+      "source": {
+        "path": "texjepa-manuscript",
+        "pdf_page": 10,
+        "location": "Section V.I, Why Simple Downstream Fixes Are Insufficient"
+      },
+      "notes": "These values describe the NCA experiment. We retain approximate wording and do not substitute its raw-encoder drift values for Tables V or VII. The Figure 8 caption on page 12 also presents the NCA values approximately and rounds clean NCA AUROC to about 0.88."
+    },
+    {
+      "id": "fig7_atelectasis_jepa300",
+      "model": "I-JEPA-H/300",
+      "reported_model_label": "JEPA300",
+      "metric": "delta_lesion",
+      "value": 0.83,
+      "reported": "0.83",
+      "precision": "reported_2_decimal_places",
+      "unit": "logit difference",
+      "condition": "classification-aligned lesion occlusion",
+      "class_name": "Atelectasis",
+      "evidence": "paper_reported",
+      "dataset_type": "aggregate_experimental_results",
+      "source": {
+        "path": "texjepa-manuscript",
+        "pdf_page": 10,
+        "location": "Figure 7, right-panel heatmap numeric annotation"
+      },
+      "notes": "We transcribe the printed cell label at two decimal places. No confidence intervals or additional precision are inferred. Figure 7 caption identifies the full model names."
+    },
+    {
+      "id": "fig7_atelectasis_mae300",
+      "model": "MAE-H/300",
+      "reported_model_label": "MAE300",
+      "metric": "delta_lesion",
+      "value": 0.07,
+      "reported": "0.07",
+      "precision": "reported_2_decimal_places",
+      "unit": "logit difference",
+      "condition": "classification-aligned lesion occlusion",
+      "class_name": "Atelectasis",
+      "evidence": "paper_reported",
+      "dataset_type": "aggregate_experimental_results",
+      "source": {
+        "path": "texjepa-manuscript",
+        "pdf_page": 10,
+        "location": "Figure 7, right-panel heatmap numeric annotation"
+      },
+      "notes": "We transcribe the printed cell label at two decimal places. No confidence intervals or additional precision are inferred. Figure 7 caption identifies the full model names."
+    },
+    {
+      "id": "fig7_ild_jepa300",
+      "model": "I-JEPA-H/300",
+      "reported_model_label": "JEPA300",
+      "metric": "delta_lesion",
+      "value": 0.64,
+      "reported": "0.64",
+      "precision": "reported_2_decimal_places",
+      "unit": "logit difference",
+      "condition": "classification-aligned lesion occlusion",
+      "class_name": "ILD",
+      "evidence": "paper_reported",
+      "dataset_type": "aggregate_experimental_results",
+      "source": {
+        "path": "texjepa-manuscript",
+        "pdf_page": 10,
+        "location": "Figure 7, right-panel heatmap numeric annotation"
+      },
+      "notes": "We transcribe the printed cell label at two decimal places. No confidence intervals or additional precision are inferred. Figure 7 caption identifies the full model names."
+    },
+    {
+      "id": "fig7_ild_mae300",
+      "model": "MAE-H/300",
+      "reported_model_label": "MAE300",
+      "metric": "delta_lesion",
+      "value": -0.09,
+      "reported": "-0.09",
+      "precision": "reported_2_decimal_places",
+      "unit": "logit difference",
+      "condition": "classification-aligned lesion occlusion",
+      "class_name": "ILD",
+      "evidence": "paper_reported",
+      "dataset_type": "aggregate_experimental_results",
+      "source": {
+        "path": "texjepa-manuscript",
+        "pdf_page": 10,
+        "location": "Figure 7, right-panel heatmap numeric annotation"
+      },
+      "notes": "We transcribe the printed cell label at two decimal places. No confidence intervals or additional precision are inferred. Figure 7 caption identifies the full model names."
+    },
+    {
+      "id": "fig7_pleural_effusion_jepa300",
+      "model": "I-JEPA-H/300",
+      "reported_model_label": "JEPA300",
+      "metric": "delta_lesion",
+      "value": 0.61,
+      "reported": "0.61",
+      "precision": "reported_2_decimal_places",
+      "unit": "logit difference",
+      "condition": "classification-aligned lesion occlusion",
+      "class_name": "Pleural effusion",
+      "evidence": "paper_reported",
+      "dataset_type": "aggregate_experimental_results",
+      "source": {
+        "path": "texjepa-manuscript",
+        "pdf_page": 10,
+        "location": "Figure 7, right-panel heatmap numeric annotation"
+      },
+      "notes": "We transcribe the printed cell label at two decimal places. No confidence intervals or additional precision are inferred. Figure 7 caption identifies the full model names."
+    },
+    {
+      "id": "fig7_pleural_effusion_mae300",
+      "model": "MAE-H/300",
+      "reported_model_label": "MAE300",
+      "metric": "delta_lesion",
+      "value": 0.14,
+      "reported": "0.14",
+      "precision": "reported_2_decimal_places",
+      "unit": "logit difference",
+      "condition": "classification-aligned lesion occlusion",
+      "class_name": "Pleural effusion",
+      "evidence": "paper_reported",
+      "dataset_type": "aggregate_experimental_results",
+      "source": {
+        "path": "texjepa-manuscript",
+        "pdf_page": 10,
+        "location": "Figure 7, right-panel heatmap numeric annotation"
+      },
+      "notes": "We transcribe the printed cell label at two decimal places. No confidence intervals or additional precision are inferred. Figure 7 caption identifies the full model names."
+    },
+    {
+      "id": "fig7_consolidation_jepa300",
+      "model": "I-JEPA-H/300",
+      "reported_model_label": "JEPA300",
+      "metric": "delta_lesion",
+      "value": 0.42,
+      "reported": "0.42",
+      "precision": "reported_2_decimal_places",
+      "unit": "logit difference",
+      "condition": "classification-aligned lesion occlusion",
+      "class_name": "Consolidation",
+      "evidence": "paper_reported",
+      "dataset_type": "aggregate_experimental_results",
+      "source": {
+        "path": "texjepa-manuscript",
+        "pdf_page": 10,
+        "location": "Figure 7, right-panel heatmap numeric annotation"
+      },
+      "notes": "We transcribe the printed cell label at two decimal places. No confidence intervals or additional precision are inferred. Figure 7 caption identifies the full model names."
+    },
+    {
+      "id": "fig7_consolidation_mae300",
+      "model": "MAE-H/300",
+      "reported_model_label": "MAE300",
+      "metric": "delta_lesion",
+      "value": 0.15,
+      "reported": "0.15",
+      "precision": "reported_2_decimal_places",
+      "unit": "logit difference",
+      "condition": "classification-aligned lesion occlusion",
+      "class_name": "Consolidation",
+      "evidence": "paper_reported",
+      "dataset_type": "aggregate_experimental_results",
+      "source": {
+        "path": "texjepa-manuscript",
+        "pdf_page": 10,
+        "location": "Figure 7, right-panel heatmap numeric annotation"
+      },
+      "notes": "We transcribe the printed cell label at two decimal places. No confidence intervals or additional precision are inferred. Figure 7 caption identifies the full model names."
+    },
+    {
+      "id": "fig7_cardiomegaly_jepa300",
+      "model": "I-JEPA-H/300",
+      "reported_model_label": "JEPA300",
+      "metric": "delta_lesion",
+      "value": 0.4,
+      "reported": "0.40",
+      "precision": "reported_2_decimal_places",
+      "unit": "logit difference",
+      "condition": "classification-aligned lesion occlusion",
+      "class_name": "Cardiomegaly",
+      "evidence": "paper_reported",
+      "dataset_type": "aggregate_experimental_results",
+      "source": {
+        "path": "texjepa-manuscript",
+        "pdf_page": 10,
+        "location": "Figure 7, right-panel heatmap numeric annotation"
+      },
+      "notes": "We transcribe the printed cell label at two decimal places. No confidence intervals or additional precision are inferred. Figure 7 caption identifies the full model names."
+    },
+    {
+      "id": "fig7_cardiomegaly_mae300",
+      "model": "MAE-H/300",
+      "reported_model_label": "MAE300",
+      "metric": "delta_lesion",
+      "value": 0.01,
+      "reported": "0.01",
+      "precision": "reported_2_decimal_places",
+      "unit": "logit difference",
+      "condition": "classification-aligned lesion occlusion",
+      "class_name": "Cardiomegaly",
+      "evidence": "paper_reported",
+      "dataset_type": "aggregate_experimental_results",
+      "source": {
+        "path": "texjepa-manuscript",
+        "pdf_page": 10,
+        "location": "Figure 7, right-panel heatmap numeric annotation"
+      },
+      "notes": "We transcribe the printed cell label at two decimal places. No confidence intervals or additional precision are inferred. Figure 7 caption identifies the full model names."
+    },
+    {
+      "id": "fig7_pneumothorax_jepa300",
+      "model": "I-JEPA-H/300",
+      "reported_model_label": "JEPA300",
+      "metric": "delta_lesion",
+      "value": 0.33,
+      "reported": "0.33",
+      "precision": "reported_2_decimal_places",
+      "unit": "logit difference",
+      "condition": "classification-aligned lesion occlusion",
+      "class_name": "Pneumothorax",
+      "evidence": "paper_reported",
+      "dataset_type": "aggregate_experimental_results",
+      "source": {
+        "path": "texjepa-manuscript",
+        "pdf_page": 10,
+        "location": "Figure 7, right-panel heatmap numeric annotation"
+      },
+      "notes": "We transcribe the printed cell label at two decimal places. No confidence intervals or additional precision are inferred. Figure 7 caption identifies the full model names."
+    },
+    {
+      "id": "fig7_pneumothorax_mae300",
+      "model": "MAE-H/300",
+      "reported_model_label": "MAE300",
+      "metric": "delta_lesion",
+      "value": 0.04,
+      "reported": "0.04",
+      "precision": "reported_2_decimal_places",
+      "unit": "logit difference",
+      "condition": "classification-aligned lesion occlusion",
+      "class_name": "Pneumothorax",
+      "evidence": "paper_reported",
+      "dataset_type": "aggregate_experimental_results",
+      "source": {
+        "path": "texjepa-manuscript",
+        "pdf_page": 10,
+        "location": "Figure 7, right-panel heatmap numeric annotation"
+      },
+      "notes": "We transcribe the printed cell label at two decimal places. No confidence intervals or additional precision are inferred. Figure 7 caption identifies the full model names."
+    },
+    {
+      "id": "fig7_infiltration_jepa300",
+      "model": "I-JEPA-H/300",
+      "reported_model_label": "JEPA300",
+      "metric": "delta_lesion",
+      "value": 0.32,
+      "reported": "0.32",
+      "precision": "reported_2_decimal_places",
+      "unit": "logit difference",
+      "condition": "classification-aligned lesion occlusion",
+      "class_name": "Infiltration",
+      "evidence": "paper_reported",
+      "dataset_type": "aggregate_experimental_results",
+      "source": {
+        "path": "texjepa-manuscript",
+        "pdf_page": 10,
+        "location": "Figure 7, right-panel heatmap numeric annotation"
+      },
+      "notes": "We transcribe the printed cell label at two decimal places. No confidence intervals or additional precision are inferred. Figure 7 caption identifies the full model names."
+    },
+    {
+      "id": "fig7_infiltration_mae300",
+      "model": "MAE-H/300",
+      "reported_model_label": "MAE300",
+      "metric": "delta_lesion",
+      "value": 0.03,
+      "reported": "0.03",
+      "precision": "reported_2_decimal_places",
+      "unit": "logit difference",
+      "condition": "classification-aligned lesion occlusion",
+      "class_name": "Infiltration",
+      "evidence": "paper_reported",
+      "dataset_type": "aggregate_experimental_results",
+      "source": {
+        "path": "texjepa-manuscript",
+        "pdf_page": 10,
+        "location": "Figure 7, right-panel heatmap numeric annotation"
+      },
+      "notes": "We transcribe the printed cell label at two decimal places. No confidence intervals or additional precision are inferred. Figure 7 caption identifies the full model names."
+    },
+    {
+      "id": "fig7_lung_opacity_jepa300",
+      "model": "I-JEPA-H/300",
+      "reported_model_label": "JEPA300",
+      "metric": "delta_lesion",
+      "value": 0.27,
+      "reported": "0.27",
+      "precision": "reported_2_decimal_places",
+      "unit": "logit difference",
+      "condition": "classification-aligned lesion occlusion",
+      "class_name": "Lung Opacity",
+      "evidence": "paper_reported",
+      "dataset_type": "aggregate_experimental_results",
+      "source": {
+        "path": "texjepa-manuscript",
+        "pdf_page": 10,
+        "location": "Figure 7, right-panel heatmap numeric annotation"
+      },
+      "notes": "We transcribe the printed cell label at two decimal places. No confidence intervals or additional precision are inferred. Figure 7 caption identifies the full model names."
+    },
+    {
+      "id": "fig7_lung_opacity_mae300",
+      "model": "MAE-H/300",
+      "reported_model_label": "MAE300",
+      "metric": "delta_lesion",
+      "value": 0.1,
+      "reported": "0.10",
+      "precision": "reported_2_decimal_places",
+      "unit": "logit difference",
+      "condition": "classification-aligned lesion occlusion",
+      "class_name": "Lung Opacity",
+      "evidence": "paper_reported",
+      "dataset_type": "aggregate_experimental_results",
+      "source": {
+        "path": "texjepa-manuscript",
+        "pdf_page": 10,
+        "location": "Figure 7, right-panel heatmap numeric annotation"
+      },
+      "notes": "We transcribe the printed cell label at two decimal places. No confidence intervals or additional precision are inferred. Figure 7 caption identifies the full model names."
+    },
+    {
+      "id": "fig8_smoothing_auroc_range",
+      "model": "I-JEPA-H/300",
+      "metric": "macro_auroc",
+      "value": null,
+      "range_lower": 0.73,
+      "range_upper": 0.75,
+      "reported": "roughly 0.73–0.75",
+      "precision": "approximate_range",
+      "unit": "macro AUROC",
+      "condition": "Gaussian smoothing and median filtering at Gaussian noise σ=0.05",
+      "class_name": null,
+      "evidence": "paper_reported",
+      "dataset_type": "aggregate_experimental_results",
+      "source": {
+        "path": "texjepa-manuscript",
+        "pdf_page": 12,
+        "location": "Figure 8 caption, left panel"
+      },
+      "notes": "The caption gives an approximate range across the two preprocessing methods. We do not assign either endpoint to a particular method or infer plotted values."
+    }
+  ]
+}

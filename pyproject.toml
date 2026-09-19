@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "texjepa"
+version = "0.1.0"
+description = "Research software for TexJEPA: chest X-ray representation learning and robustness diagnostics"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = ["torch>=2.5,<3", "numpy>=1.26", "pillow>=10", "matplotlib>=3.8,<4"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "Programming Language :: Python :: 3",
+    "Operating System :: POSIX :: Linux",
+    "Operating System :: MacOS",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=8"]
+backbones = ["timm", "transformers", "safetensors"]
+
+[project.scripts]
+texjepa-smoke = "scripts.run_all:main"
+texjepa-experiment = "scripts.run_experiments:main"
+texjepa-pretrain = "scripts.pretrain:main"
+texjepa-prepare-manifest = "scripts.prepare_manifest:main"
+texjepa-export-encoder = "scripts.export_encoder:main"
+texjepa-tables = "report.build_tables:main"
+texjepa-figures = "report.build_figures:main"
+
+[tool.setuptools.packages.find]
+include = ["configs*", "data*", "models*", "probing*", "perturbations*", "metrics*", "evaluation*", "report*", "scripts*", "training*"]
+
+[tool.setuptools.package-data]
+configs = ["*.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

@@ -1,0 +1,4 @@
+variant,source,diagnostic_role,evidence,dataset_type,source_pdf,source_pdf_page,source_table
+TexJEPA-N,v4,Missing noise-invariance signal,paper_reported,aggregate_experimental_results,texjepa-manuscript,4,II
+TexJEPA-R,v5,Register-token readout hygiene and tight-mask texture prediction,paper_reported,aggregate_experimental_results,texjepa-manuscript,4,II
+TexJEPA-C,v6,Patch-token feature decorrelation and high-noise smoothing,paper_reported,aggregate_experimental_results,texjepa-manuscript,4,II

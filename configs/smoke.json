@@ -1,0 +1,6 @@
+{
+  "runtime": {"dry_run": true, "use_random_init": true, "batch_size": 2},
+  "model": {"mini": true, "image_size": 32, "patch_size": 8, "embed_dim": 64, "depth": 2, "num_heads": 4, "predictor_dim": 64, "predictor_depth": 2},
+  "data": {"source": "dummy"},
+  "lesion": {"bootstrap_replicates": 200}
+}

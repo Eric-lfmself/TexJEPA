@@ -1,0 +1,4 @@
+protocol,trainable_part,key_settings,evidence,dataset_type,source_pdf,source_pdf_page,source_table
+Linear probe,Head,"SGD, cosine schedule, 100 epochs",paper_reported,aggregate_experimental_results,texjepa-manuscript,4,III
+MLP probe,Head,"Hidden 512, GELU, dropout",paper_reported,aggregate_experimental_results,texjepa-manuscript,4,III
+Partial FT,Last two ViT blocks + head,"AdamW, 15 epochs",paper_reported,aggregate_experimental_results,texjepa-manuscript,4,III

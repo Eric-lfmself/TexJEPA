@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "architecture": "ijepa",
+  "variant": "v3.1",
+  "runtime": {
+    "profile": "experiment",
+    "device": "cuda:0",
+    "batch_size": 32,
+    "output_dir": "/srv/texjepa/checkpoints/native_ijepa"
+  },
+  "data": {
+    "unlabeled_manifest": "/srv/texjepa/manifests/mimic_unlabeled.json",
+    "image_root": "/srv/texjepa/mimic"
+  },
+  "normalization": {
+    "mean": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "std": [
+      1.0,
+      1.0,
+      1.0
+    ]
+  },
+  "training": {
+    "epochs": 300,
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "checkpoint_every": 1
+  }
+}
