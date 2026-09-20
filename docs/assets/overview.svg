@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="316" viewBox="0 0 1120 316" role="img" aria-labelledby="title desc">
+  <title id="title">TexJEPA: compare, diagnose, and post-train chest X-ray encoders</title>
+  <desc id="desc">We compare I-JEPA and MAE pretrained on MIMIC-CXR and probed on VinDr-CXR or VinBigData. We jointly measure classification, noise-induced feature drift, and lesion sensitivity. I-JEPA post-training uses noisy context and a clean EMA target; TexJEPA-R and TexJEPA-C extend TexJEPA-N with registers or patch variance and covariance regularization.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M1 1 L6 4 L1 7" fill="none" stroke="#64748b" stroke-width="1.5"/></marker>
+  </defs>
+  <rect width="1120" height="316" rx="18" fill="#f6f8fc"/>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="30" y="38" font-size="14" font-weight="700" letter-spacing="2" fill="#52627a">STUDY OVERVIEW</text>
+    <rect x="28" y="62" width="324" height="196" rx="12" fill="#ffffff" stroke="#d4deea"/>
+    <rect x="398" y="62" width="324" height="196" rx="12" fill="#ffffff" stroke="#d4deea"/>
+    <rect x="768" y="62" width="324" height="196" rx="12" fill="#edf4ff" stroke="#b8cfee"/>
+    <path d="M361 160 H387" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+    <path d="M731 160 H757" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="50" y="94" font-size="14" font-weight="700" letter-spacing="1.2" fill="#356494">01 / COMPARE</text>
+    <text x="50" y="133" font-size="25" font-weight="700" fill="#18273c">I-JEPA and MAE</text>
+    <text x="50" y="174" font-size="18" fill="#44546a">MIMIC-CXR pretraining</text>
+    <text x="50" y="205" font-size="18" fill="#44546a">VinDr-CXR / VinBigData</text>
+    <text x="50" y="232" font-size="18" fill="#44546a">downstream evaluation</text>
+    <text x="420" y="94" font-size="14" font-weight="700" letter-spacing="1.2" fill="#356494">02 / DIAGNOSE</text>
+    <text x="420" y="133" font-size="25" font-weight="700" fill="#18273c">Three evaluation axes</text>
+    <circle cx="426" cy="169" r="4" fill="#197a9f"/>
+    <text x="441" y="175" font-size="18" fill="#44546a">Classification under noise</text>
+    <circle cx="426" cy="200" r="4" fill="#197a9f"/>
+    <text x="441" y="206" font-size="18" fill="#44546a">Representation drift</text>
+    <circle cx="426" cy="231" r="4" fill="#197a9f"/>
+    <text x="441" y="237" font-size="18" fill="#44546a">Lesion sensitivity</text>
+    <text x="790" y="94" font-size="14" font-weight="700" letter-spacing="1.2" fill="#356494">03 / POST-TRAIN I-JEPA</text>
+    <text x="790" y="133" font-size="25" font-weight="700" fill="#18273c">TexJEPA-N</text>
+    <text x="790" y="166" font-size="17" fill="#44546a">Noisy context → clean EMA target</text>
+    <path d="M804 180 V218 H823 M804 196 H823" stroke="#7593bc" stroke-width="1.6" fill="none"/>
+    <text x="834" y="202" font-size="18" fill="#244d83"><tspan font-weight="700">R</tspan> · registers + masking</text>
+    <text x="834" y="229" font-size="18" fill="#244d83"><tspan font-weight="700">C</tspan> · variance + covariance</text>
+    <text x="560" y="291" text-anchor="middle" font-size="18" font-weight="700" fill="#344862">Evaluate noise robustness and lesion sensitivity together.</text>
+  </g>
+</svg>
