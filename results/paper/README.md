@@ -95,3 +95,22 @@ The main figure compares noise AUROC, representation drift, and lesion sensitivi
 ```sh
 python -m scripts.plot_paper_results --output outputs/paper_figures
 ```
+
+## README result gallery
+
+We also provide four figures designed for reading on the repository homepage. Every point comes from the existing aggregate tables; the gallery adds no estimates, fitted trends, or patient images.
+
+| Figure | Source and content | Vector exports |
+| --- | --- | --- |
+| [Baseline robustness](figures/readme/baseline_robustness.png) | Tables IV–V: frozen linear-probe AUROC and cosine drift | [SVG](figures/readme/baseline_robustness.svg), [PDF](figures/readme/baseline_robustness.pdf) |
+| [Post-training](figures/readme/post_training.png) | Tables IX–X: all seven checkpoints, including I-JEPA-H/201 (v3.1) and TexJEPA-N/R/C | [SVG](figures/readme/post_training.svg), [PDF](figures/readme/post_training.pdf) |
+| [Lesion sensitivity and trade-off](figures/readme/lesion_tradeoff.png) | Table VIII: reported 95% bootstrap intervals; Table XI: paired drift and lesion point estimates | [SVG](figures/readme/lesion_tradeoff.svg), [PDF](figures/readme/lesion_tradeoff.pdf) |
+| [Frequency and probes](figures/readme/frequency_and_probes.png) | Tables VI–VII: frequency AUROC and all six model/protocol combinations at clean and σ = 0.05 | [SVG](figures/readme/frequency_and_probes.svg), [PDF](figures/readme/frequency_and_probes.pdf) |
+
+The [gallery manifest](figures/readme/manifest.json) contains complete selected source tables, plotted measurements, figure captions and alternative text, transformations, and source/output SHA-256 fingerprints. All AUROC panels share the range 0.40–1.00; drift uses its full 0–2 range. We preserve all missing source values as null. Model colors remain consistent across panels, with distinct symbols and line styles.
+
+```sh
+python -m scripts.plot_readme_results --output outputs/readme_results
+```
+
+The exporter requires a fresh destination for its output filenames and refuses to overwrite existing figures. It runs entirely from the committed aggregate data without the manuscript, datasets, or model weights.

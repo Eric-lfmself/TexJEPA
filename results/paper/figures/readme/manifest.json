@@ -1,0 +1,2068 @@
+{
+  "source": "results/paper/tables.json",
+  "source_sha256": "1d87589d9376c4d30aa290f5ae711d3788d110ea1278ba1ba8ff2e21bac139a8",
+  "source_metadata": {
+    "path": "texjepa-manuscript",
+    "availability": "not_distributed",
+    "title": "When Texture Becomes the World: Texture-aware JEPA for Chest X-ray Representation Learning",
+    "sha256": "ca4a03a5f94dbb5b60396f76834d68d54b39eb760e73ef2d02c913dd74dc9ab7",
+    "pdf_pages": 13
+  },
+  "schema_version": 1,
+  "evidence": "paper_reported",
+  "matplotlib_version": "3.10.6",
+  "destination": "GitHub README, approximately 850 px wide",
+  "unreported_values": "Retain nulls in selected records; do not impute or draw them.",
+  "transformations": [
+    "Select complete source tables without changing values or display precision.",
+    "Map historical checkpoint names to TexJEPA variant names for labels.",
+    "Join reported noise conditions with straight segments, without evaluated interpolation.",
+    "Display original AUROCs only for frequency and probe comparisons.",
+    "Draw original Table VIII lower/upper confidence limits.",
+    "Pair Table XI drift and lesion values within each original row; fit no trend."
+  ],
+  "figures": [
+    {
+      "name": "baseline_robustness",
+      "caption": "Tables IV–V. Macro AUROC under a frozen linear probe and cosine representation drift (1 − cosine similarity) for I-JEPA-H/300 and MAE-H/300. Sigma is the input-intensity noise standard deviation in our evaluation preprocessing. AUROC uses a shared 0.40–1.00 display range across the gallery; drift uses its full 0–2 range. Lines join reported conditions; no interpolation is evaluated.",
+      "alt": "Two line plots compare I-JEPA-H/300 and MAE-H/300 across Gaussian noise levels. I-JEPA starts with higher clean AUROC but loses more utility at light noise and has greater representation drift at all four reported noise levels.",
+      "selected_source_tables": [
+        {
+          "id": "table_iv",
+          "table": "IV",
+          "title": "Gaussian-noise robustness under frozen linear probing (AUROC).",
+          "table_kind": "numeric_results",
+          "evidence": "paper_reported",
+          "dataset_type": "aggregate_experimental_results",
+          "source": {
+            "path": "texjepa-manuscript",
+            "pdf_page": 5,
+            "table": "IV"
+          },
+          "csv": "csv/table_iv.csv",
+          "columns": [
+            {
+              "key": "model",
+              "label": "Model",
+              "type": "string",
+              "unit": null
+            },
+            {
+              "key": "clean",
+              "label": "Clean",
+              "type": "number",
+              "unit": "macro AUROC",
+              "decimal_places": 3,
+              "condition": "clean"
+            },
+            {
+              "key": "sigma_0_05",
+              "label": "0.05",
+              "type": "number",
+              "unit": "macro AUROC",
+              "decimal_places": 3,
+              "condition": "gaussian_noise",
+              "sigma": 0.05,
+              "sigma_unit": "input intensity standard deviation; numeric scale as specified by the evaluation preprocessing"
+            },
+            {
+              "key": "sigma_0_10",
+              "label": "0.10",
+              "type": "number",
+              "unit": "macro AUROC",
+              "decimal_places": 3,
+              "condition": "gaussian_noise",
+              "sigma": 0.1,
+              "sigma_unit": "input intensity standard deviation; numeric scale as specified by the evaluation preprocessing"
+            },
+            {
+              "key": "sigma_0_20",
+              "label": "0.20",
+              "type": "number",
+              "unit": "macro AUROC",
+              "decimal_places": 3,
+              "condition": "gaussian_noise",
+              "sigma": 0.2,
+              "sigma_unit": "input intensity standard deviation; numeric scale as specified by the evaluation preprocessing"
+            },
+            {
+              "key": "sigma_0_30",
+              "label": "0.30",
+              "type": "number",
+              "unit": "macro AUROC",
+              "decimal_places": 3,
+              "condition": "gaussian_noise",
+              "sigma": 0.3,
+              "sigma_unit": "input intensity standard deviation; numeric scale as specified by the evaluation preprocessing"
+            }
+          ],
+          "rows": [
+            {
+              "model": "I-JEPA-H/300",
+              "clean": 0.91,
+              "sigma_0_05": 0.641,
+              "sigma_0_10": 0.589,
+              "sigma_0_20": 0.571,
+              "sigma_0_30": 0.553
+            },
+            {
+              "model": "MAE-H/300",
+              "clean": 0.891,
+              "sigma_0_05": 0.777,
+              "sigma_0_10": 0.618,
+              "sigma_0_20": 0.49,
+              "sigma_0_30": 0.485
+            }
+          ],
+          "reported_headers": [
+            "Model",
+            "Clean",
+            "0.05",
+            "0.10",
+            "0.20",
+            "0.30"
+          ],
+          "reported_rows": [
+            [
+              "I-JEPA-H/300",
+              "0.910",
+              "0.641",
+              "0.589",
+              "0.571",
+              "0.553"
+            ],
+            [
+              "MAE-H/300",
+              "0.891",
+              "0.777",
+              "0.618",
+              "0.490",
+              "0.485"
+            ]
+          ],
+          "notes": []
+        },
+        {
+          "id": "table_v",
+          "table": "V",
+          "title": "Cosine representation drift under Gaussian noise.",
+          "table_kind": "numeric_results",
+          "evidence": "paper_reported",
+          "dataset_type": "aggregate_experimental_results",
+          "source": {
+            "path": "texjepa-manuscript",
+            "pdf_page": 6,
+            "table": "V"
+          },
+          "csv": "csv/table_v.csv",
+          "columns": [
+            {
+              "key": "model",
+              "label": "Model",
+              "type": "string",
+              "unit": null
+            },
+            {
+              "key": "sigma_0_05",
+              "label": "0.05",
+              "type": "number",
+              "unit": "cosine drift",
+              "decimal_places": 3,
+              "condition": "gaussian_noise",
+              "sigma": 0.05,
+              "sigma_unit": "input intensity standard deviation; numeric scale as specified by the evaluation preprocessing"
+            },
+            {
+              "key": "sigma_0_10",
+              "label": "0.10",
+              "type": "number",
+              "unit": "cosine drift",
+              "decimal_places": 3,
+              "condition": "gaussian_noise",
+              "sigma": 0.1,
+              "sigma_unit": "input intensity standard deviation; numeric scale as specified by the evaluation preprocessing"
+            },
+            {
+              "key": "sigma_0_20",
+              "label": "0.20",
+              "type": "number",
+              "unit": "cosine drift",
+              "decimal_places": 3,
+              "condition": "gaussian_noise",
+              "sigma": 0.2,
+              "sigma_unit": "input intensity standard deviation; numeric scale as specified by the evaluation preprocessing"
+            },
+            {
+              "key": "sigma_0_30",
+              "label": "0.30",
+              "type": "number",
+              "unit": "cosine drift",
+              "decimal_places": 3,
+              "condition": "gaussian_noise",
+              "sigma": 0.3,
+              "sigma_unit": "input intensity standard deviation; numeric scale as specified by the evaluation preprocessing"
+            }
+          ],
+          "rows": [
+            {
+              "model": "I-JEPA-H/300",
+              "sigma_0_05": 0.755,
+              "sigma_0_10": 0.895,
+              "sigma_0_20": 0.871,
+              "sigma_0_30": 0.824
+            },
+            {
+              "model": "MAE-H/300",
+              "sigma_0_05": 0.169,
+              "sigma_0_10": 0.319,
+              "sigma_0_20": 0.339,
+              "sigma_0_30": 0.337
+            }
+          ],
+          "reported_headers": [
+            "Model",
+            "0.05",
+            "0.10",
+            "0.20",
+            "0.30"
+          ],
+          "reported_rows": [
+            [
+              "I-JEPA-H/300",
+              "0.755",
+              "0.895",
+              "0.871",
+              "0.824"
+            ],
+            [
+              "MAE-H/300",
+              "0.169",
+              "0.319",
+              "0.339",
+              "0.337"
+            ]
+          ],
+          "notes": [
+            "Cosine drift is 1 - cosine similarity, as defined in Equation (2)."
+          ]
+        }
+      ],
+      "palette": {
+        "description": "Nature Publishing Group-inspired categorical colors",
+        "model_colors": {
+          "baseline": "#3C5488",
+          "noise": "#4DBBD5",
+          "register": "#00A087",
+          "covariance": "#E64B35",
+          "mae": "#8491B4",
+          "eva": "#F39B7F",
+          "rad": "#7E6148"
+        }
+      },
+      "plotted_measurements": [
+        {
+          "id": "table_iv/row/0",
+          "source_row": 0,
+          "model": "I-JEPA-H/300",
+          "label": "I-JEPA-H/300",
+          "columns": [
+            "clean",
+            "sigma_0_05",
+            "sigma_0_10",
+            "sigma_0_20",
+            "sigma_0_30"
+          ],
+          "x": [
+            0.0,
+            0.05,
+            0.1,
+            0.2,
+            0.3
+          ],
+          "y": [
+            0.91,
+            0.641,
+            0.589,
+            0.571,
+            0.553
+          ]
+        },
+        {
+          "id": "table_iv/row/1",
+          "source_row": 1,
+          "model": "MAE-H/300",
+          "label": "MAE-H/300",
+          "columns": [
+            "clean",
+            "sigma_0_05",
+            "sigma_0_10",
+            "sigma_0_20",
+            "sigma_0_30"
+          ],
+          "x": [
+            0.0,
+            0.05,
+            0.1,
+            0.2,
+            0.3
+          ],
+          "y": [
+            0.891,
+            0.777,
+            0.618,
+            0.49,
+            0.485
+          ]
+        },
+        {
+          "id": "table_v/row/0",
+          "source_row": 0,
+          "model": "I-JEPA-H/300",
+          "label": "I-JEPA-H/300",
+          "columns": [
+            "sigma_0_05",
+            "sigma_0_10",
+            "sigma_0_20",
+            "sigma_0_30"
+          ],
+          "x": [
+            0.05,
+            0.1,
+            0.2,
+            0.3
+          ],
+          "y": [
+            0.755,
+            0.895,
+            0.871,
+            0.824
+          ]
+        },
+        {
+          "id": "table_v/row/1",
+          "source_row": 1,
+          "model": "MAE-H/300",
+          "label": "MAE-H/300",
+          "columns": [
+            "sigma_0_05",
+            "sigma_0_10",
+            "sigma_0_20",
+            "sigma_0_30"
+          ],
+          "x": [
+            0.05,
+            0.1,
+            0.2,
+            0.3
+          ],
+          "y": [
+            0.169,
+            0.319,
+            0.339,
+            0.337
+          ]
+        }
+      ],
+      "size_inches": [
+        13.2,
+        7.4
+      ],
+      "png_dpi": 180,
+      "files": [
+        {
+          "file": "baseline_robustness.png",
+          "sha256": "c151c9985c517ce0efc013973fb8f62c3b1238210102b15d830c62a53b791bcd"
+        },
+        {
+          "file": "baseline_robustness.svg",
+          "sha256": "3da8ed6d26de1e1a00f8dab11e96def645f4ddb721a9968613a23205bee6fd81"
+        },
+        {
+          "file": "baseline_robustness.pdf",
+          "sha256": "24ea00215708f0eaa6c1fa2fc776e803721d48df3a459000ff31928cfc0901a0"
+        }
+      ]
+    },
+    {
+      "name": "post_training",
+      "caption": "Tables IX–X. Macro AUROC and cosine drift (1 − cosine similarity) for all seven reported checkpoints. The post-training baseline is I-JEPA-H/201 (v3.1), distinct from I-JEPA-H/300 in Tables IV–VII. TexJEPA-N/R/C map to v4/v5/v6. Sigma is input-intensity standard deviation. AUROC is displayed over 0.40–1.00 and drift over the full 0–2 range. Lines join reported conditions only.",
+      "alt": "Two line plots show all seven reported checkpoints. TexJEPA variants preserve AUROC at light noise; TexJEPA-C maintains the lowest drift at every reported noise level, while its AUROC also declines at the strongest noise.",
+      "selected_source_tables": [
+        {
+          "id": "table_ix",
+          "table": "IX",
+          "title": "Post-training robustness comparison under Gaussian noise (AUROC).",
+          "table_kind": "numeric_results",
+          "evidence": "paper_reported",
+          "dataset_type": "aggregate_experimental_results",
+          "source": {
+            "path": "texjepa-manuscript",
+            "pdf_page": 8,
+            "table": "IX"
+          },
+          "csv": "csv/table_ix.csv",
+          "columns": [
+            {
+              "key": "model",
+              "label": "Model",
+              "type": "string",
+              "unit": null
+            },
+            {
+              "key": "clean",
+              "label": "Clean",
+              "type": "number",
+              "unit": "macro AUROC",
+              "decimal_places": 3,
+              "condition": "clean"
+            },
+            {
+              "key": "sigma_0_05",
+              "label": "σ=0.05",
+              "type": "number",
+              "unit": "macro AUROC",
+              "decimal_places": 3,
+              "condition": "gaussian_noise",
+              "sigma": 0.05,
+              "sigma_unit": "input intensity standard deviation; numeric scale as specified by the evaluation preprocessing"
+            },
+            {
+              "key": "sigma_0_10",
+              "label": "σ=0.10",
+              "type": "number",
+              "unit": "macro AUROC",
+              "decimal_places": 3,
+              "condition": "gaussian_noise",
+              "sigma": 0.1,
+              "sigma_unit": "input intensity standard deviation; numeric scale as specified by the evaluation preprocessing"
+            },
+            {
+              "key": "sigma_0_20",
+              "label": "σ=0.20",
+              "type": "number",
+              "unit": "macro AUROC",
+              "decimal_places": 3,
+              "condition": "gaussian_noise",
+              "sigma": 0.2,
+              "sigma_unit": "input intensity standard deviation; numeric scale as specified by the evaluation preprocessing"
+            },
+            {
+              "key": "sigma_0_30",
+              "label": "σ=0.30",
+              "type": "number",
+              "unit": "macro AUROC",
+              "decimal_places": 3,
+              "condition": "gaussian_noise",
+              "sigma": 0.3,
+              "sigma_unit": "input intensity standard deviation; numeric scale as specified by the evaluation preprocessing"
+            }
+          ],
+          "rows": [
+            {
+              "model": "v3.1 (Baseline)",
+              "clean": 0.916,
+              "sigma_0_05": 0.643,
+              "sigma_0_10": 0.596,
+              "sigma_0_20": 0.586,
+              "sigma_0_30": 0.588
+            },
+            {
+              "model": "v4 (+noise)",
+              "clean": 0.918,
+              "sigma_0_05": 0.906,
+              "sigma_0_10": 0.883,
+              "sigma_0_20": 0.713,
+              "sigma_0_30": 0.513
+            },
+            {
+              "model": "v5 (+reg)",
+              "clean": 0.93,
+              "sigma_0_05": 0.92,
+              "sigma_0_10": 0.897,
+              "sigma_0_20": 0.556,
+              "sigma_0_30": 0.55
+            },
+            {
+              "model": "v6 (+vicreg)",
+              "clean": 0.916,
+              "sigma_0_05": 0.906,
+              "sigma_0_10": 0.889,
+              "sigma_0_20": 0.802,
+              "sigma_0_30": 0.529
+            },
+            {
+              "model": "MAE-H/300",
+              "clean": 0.891,
+              "sigma_0_05": 0.777,
+              "sigma_0_10": 0.618,
+              "sigma_0_20": 0.49,
+              "sigma_0_30": 0.485
+            },
+            {
+              "model": "EVA-X-B/300",
+              "clean": 0.933,
+              "sigma_0_05": 0.836,
+              "sigma_0_10": 0.645,
+              "sigma_0_20": 0.575,
+              "sigma_0_30": 0.563
+            },
+            {
+              "model": "RAD-DINO-B/300",
+              "clean": 0.935,
+              "sigma_0_05": 0.871,
+              "sigma_0_10": 0.672,
+              "sigma_0_20": 0.512,
+              "sigma_0_30": 0.554
+            }
+          ],
+          "reported_headers": [
+            "Model",
+            "Clean",
+            "σ=0.05",
+            "σ=0.10",
+            "σ=0.20",
+            "σ=0.30"
+          ],
+          "reported_rows": [
+            [
+              "v3.1 (Baseline)",
+              "0.916",
+              "0.643",
+              "0.596",
+              "0.586",
+              "0.588"
+            ],
+            [
+              "v4 (+noise)",
+              "0.918",
+              "0.906",
+              "0.883",
+              "0.713",
+              "0.513"
+            ],
+            [
+              "v5 (+reg)",
+              "0.930",
+              "0.920",
+              "0.897",
+              "0.556",
+              "0.550"
+            ],
+            [
+              "v6 (+vicreg)",
+              "0.916",
+              "0.906",
+              "0.889",
+              "0.802",
+              "0.529"
+            ],
+            [
+              "MAE-H/300",
+              "0.891",
+              "0.777",
+              "0.618",
+              "0.490",
+              "0.485"
+            ],
+            [
+              "EVA-X-B/300",
+              "0.933",
+              "0.836",
+              "0.645",
+              "0.575",
+              "0.563"
+            ],
+            [
+              "RAD-DINO-B/300",
+              "0.935",
+              "0.871",
+              "0.672",
+              "0.512",
+              "0.554"
+            ]
+          ],
+          "notes": [
+            "We preserve the historical checkpoint labels printed in this table. Section III.B identifies v3.1 with I-JEPA-H/201; it is distinct from the I-JEPA-H/300 baseline in Tables IV-VII.",
+            "Table XII repeats these numeric rows; it is not an independent experiment."
+          ]
+        },
+        {
+          "id": "table_x",
+          "table": "X",
+          "title": "Post-training cosine drift under Gaussian noise.",
+          "table_kind": "numeric_results",
+          "evidence": "paper_reported",
+          "dataset_type": "aggregate_experimental_results",
+          "source": {
+            "path": "texjepa-manuscript",
+            "pdf_page": 9,
+            "table": "X"
+          },
+          "csv": "csv/table_x.csv",
+          "columns": [
+            {
+              "key": "model",
+              "label": "Model",
+              "type": "string",
+              "unit": null
+            },
+            {
+              "key": "sigma_0_05",
+              "label": "σ=0.05",
+              "type": "number",
+              "unit": "cosine drift",
+              "decimal_places": 3,
+              "condition": "gaussian_noise",
+              "sigma": 0.05,
+              "sigma_unit": "input intensity standard deviation; numeric scale as specified by the evaluation preprocessing"
+            },
+            {
+              "key": "sigma_0_10",
+              "label": "σ=0.10",
+              "type": "number",
+              "unit": "cosine drift",
+              "decimal_places": 3,
+              "condition": "gaussian_noise",
+              "sigma": 0.1,
+              "sigma_unit": "input intensity standard deviation; numeric scale as specified by the evaluation preprocessing"
+            },
+            {
+              "key": "sigma_0_20",
+              "label": "σ=0.20",
+              "type": "number",
+              "unit": "cosine drift",
+              "decimal_places": 3,
+              "condition": "gaussian_noise",
+              "sigma": 0.2,
+              "sigma_unit": "input intensity standard deviation; numeric scale as specified by the evaluation preprocessing"
+            },
+            {
+              "key": "sigma_0_30",
+              "label": "σ=0.30",
+              "type": "number",
+              "unit": "cosine drift",
+              "decimal_places": 3,
+              "condition": "gaussian_noise",
+              "sigma": 0.3,
+              "sigma_unit": "input intensity standard deviation; numeric scale as specified by the evaluation preprocessing"
+            }
+          ],
+          "rows": [
+            {
+              "model": "v3.1 (Baseline)",
+              "sigma_0_05": 0.872,
+              "sigma_0_10": 0.963,
+              "sigma_0_20": 0.957,
+              "sigma_0_30": 0.956
+            },
+            {
+              "model": "v4 (+noise)",
+              "sigma_0_05": 0.017,
+              "sigma_0_10": 0.049,
+              "sigma_0_20": 0.489,
+              "sigma_0_30": 0.777
+            },
+            {
+              "model": "v5 (+reg)",
+              "sigma_0_05": 0.016,
+              "sigma_0_10": 0.052,
+              "sigma_0_20": 0.781,
+              "sigma_0_30": 0.811
+            },
+            {
+              "model": "v6 (+vicreg)",
+              "sigma_0_05": 0.01,
+              "sigma_0_10": 0.017,
+              "sigma_0_20": 0.064,
+              "sigma_0_30": 0.212
+            },
+            {
+              "model": "MAE-H/300",
+              "sigma_0_05": 0.169,
+              "sigma_0_10": 0.319,
+              "sigma_0_20": 0.339,
+              "sigma_0_30": 0.337
+            },
+            {
+              "model": "EVA-X-B/300",
+              "sigma_0_05": 0.125,
+              "sigma_0_10": 0.237,
+              "sigma_0_20": 0.285,
+              "sigma_0_30": 0.299
+            },
+            {
+              "model": "RAD-DINO-B/300",
+              "sigma_0_05": 0.164,
+              "sigma_0_10": 0.464,
+              "sigma_0_20": 0.701,
+              "sigma_0_30": 0.711
+            }
+          ],
+          "reported_headers": [
+            "Model",
+            "σ=0.05",
+            "σ=0.10",
+            "σ=0.20",
+            "σ=0.30"
+          ],
+          "reported_rows": [
+            [
+              "v3.1 (Baseline)",
+              "0.872",
+              "0.963",
+              "0.957",
+              "0.956"
+            ],
+            [
+              "v4 (+noise)",
+              "0.017",
+              "0.049",
+              "0.489",
+              "0.777"
+            ],
+            [
+              "v5 (+reg)",
+              "0.016",
+              "0.052",
+              "0.781",
+              "0.811"
+            ],
+            [
+              "v6 (+vicreg)",
+              "0.010",
+              "0.017",
+              "0.064",
+              "0.212"
+            ],
+            [
+              "MAE-H/300",
+              "0.169",
+              "0.319",
+              "0.339",
+              "0.337"
+            ],
+            [
+              "EVA-X-B/300",
+              "0.125",
+              "0.237",
+              "0.285",
+              "0.299"
+            ],
+            [
+              "RAD-DINO-B/300",
+              "0.164",
+              "0.464",
+              "0.701",
+              "0.711"
+            ]
+          ],
+          "notes": []
+        }
+      ],
+      "palette": {
+        "description": "Nature Publishing Group-inspired categorical colors",
+        "model_colors": {
+          "baseline": "#3C5488",
+          "noise": "#4DBBD5",
+          "register": "#00A087",
+          "covariance": "#E64B35",
+          "mae": "#8491B4",
+          "eva": "#F39B7F",
+          "rad": "#7E6148"
+        }
+      },
+      "plotted_measurements": [
+        {
+          "id": "table_ix/row/0",
+          "source_row": 0,
+          "model": "v3.1 (Baseline)",
+          "label": "I-JEPA-H/201 · v3.1",
+          "columns": [
+            "clean",
+            "sigma_0_05",
+            "sigma_0_10",
+            "sigma_0_20",
+            "sigma_0_30"
+          ],
+          "x": [
+            0.0,
+            0.05,
+            0.1,
+            0.2,
+            0.3
+          ],
+          "y": [
+            0.916,
+            0.643,
+            0.596,
+            0.586,
+            0.588
+          ]
+        },
+        {
+          "id": "table_ix/row/1",
+          "source_row": 1,
+          "model": "v4 (+noise)",
+          "label": "TexJEPA-N · v4",
+          "columns": [
+            "clean",
+            "sigma_0_05",
+            "sigma_0_10",
+            "sigma_0_20",
+            "sigma_0_30"
+          ],
+          "x": [
+            0.0,
+            0.05,
+            0.1,
+            0.2,
+            0.3
+          ],
+          "y": [
+            0.918,
+            0.906,
+            0.883,
+            0.713,
+            0.513
+          ]
+        },
+        {
+          "id": "table_ix/row/2",
+          "source_row": 2,
+          "model": "v5 (+reg)",
+          "label": "TexJEPA-R · v5",
+          "columns": [
+            "clean",
+            "sigma_0_05",
+            "sigma_0_10",
+            "sigma_0_20",
+            "sigma_0_30"
+          ],
+          "x": [
+            0.0,
+            0.05,
+            0.1,
+            0.2,
+            0.3
+          ],
+          "y": [
+            0.93,
+            0.92,
+            0.897,
+            0.556,
+            0.55
+          ]
+        },
+        {
+          "id": "table_ix/row/3",
+          "source_row": 3,
+          "model": "v6 (+vicreg)",
+          "label": "TexJEPA-C · v6",
+          "columns": [
+            "clean",
+            "sigma_0_05",
+            "sigma_0_10",
+            "sigma_0_20",
+            "sigma_0_30"
+          ],
+          "x": [
+            0.0,
+            0.05,
+            0.1,
+            0.2,
+            0.3
+          ],
+          "y": [
+            0.916,
+            0.906,
+            0.889,
+            0.802,
+            0.529
+          ]
+        },
+        {
+          "id": "table_ix/row/4",
+          "source_row": 4,
+          "model": "MAE-H/300",
+          "label": "MAE-H/300",
+          "columns": [
+            "clean",
+            "sigma_0_05",
+            "sigma_0_10",
+            "sigma_0_20",
+            "sigma_0_30"
+          ],
+          "x": [
+            0.0,
+            0.05,
+            0.1,
+            0.2,
+            0.3
+          ],
+          "y": [
+            0.891,
+            0.777,
+            0.618,
+            0.49,
+            0.485
+          ]
+        },
+        {
+          "id": "table_ix/row/5",
+          "source_row": 5,
+          "model": "EVA-X-B/300",
+          "label": "EVA-X-B/300",
+          "columns": [
+            "clean",
+            "sigma_0_05",
+            "sigma_0_10",
+            "sigma_0_20",
+            "sigma_0_30"
+          ],
+          "x": [
+            0.0,
+            0.05,
+            0.1,
+            0.2,
+            0.3
+          ],
+          "y": [
+            0.933,
+            0.836,
+            0.645,
+            0.575,
+            0.563
+          ]
+        },
+        {
+          "id": "table_ix/row/6",
+          "source_row": 6,
+          "model": "RAD-DINO-B/300",
+          "label": "RAD-DINO-B/300",
+          "columns": [
+            "clean",
+            "sigma_0_05",
+            "sigma_0_10",
+            "sigma_0_20",
+            "sigma_0_30"
+          ],
+          "x": [
+            0.0,
+            0.05,
+            0.1,
+            0.2,
+            0.3
+          ],
+          "y": [
+            0.935,
+            0.871,
+            0.672,
+            0.512,
+            0.554
+          ]
+        },
+        {
+          "id": "table_x/row/0",
+          "source_row": 0,
+          "model": "v3.1 (Baseline)",
+          "label": "I-JEPA-H/201 · v3.1",
+          "columns": [
+            "sigma_0_05",
+            "sigma_0_10",
+            "sigma_0_20",
+            "sigma_0_30"
+          ],
+          "x": [
+            0.05,
+            0.1,
+            0.2,
+            0.3
+          ],
+          "y": [
+            0.872,
+            0.963,
+            0.957,
+            0.956
+          ]
+        },
+        {
+          "id": "table_x/row/1",
+          "source_row": 1,
+          "model": "v4 (+noise)",
+          "label": "TexJEPA-N · v4",
+          "columns": [
+            "sigma_0_05",
+            "sigma_0_10",
+            "sigma_0_20",
+            "sigma_0_30"
+          ],
+          "x": [
+            0.05,
+            0.1,
+            0.2,
+            0.3
+          ],
+          "y": [
+            0.017,
+            0.049,
+            0.489,
+            0.777
+          ]
+        },
+        {
+          "id": "table_x/row/2",
+          "source_row": 2,
+          "model": "v5 (+reg)",
+          "label": "TexJEPA-R · v5",
+          "columns": [
+            "sigma_0_05",
+            "sigma_0_10",
+            "sigma_0_20",
+            "sigma_0_30"
+          ],
+          "x": [
+            0.05,
+            0.1,
+            0.2,
+            0.3
+          ],
+          "y": [
+            0.016,
+            0.052,
+            0.781,
+            0.811
+          ]
+        },
+        {
+          "id": "table_x/row/3",
+          "source_row": 3,
+          "model": "v6 (+vicreg)",
+          "label": "TexJEPA-C · v6",
+          "columns": [
+            "sigma_0_05",
+            "sigma_0_10",
+            "sigma_0_20",
+            "sigma_0_30"
+          ],
+          "x": [
+            0.05,
+            0.1,
+            0.2,
+            0.3
+          ],
+          "y": [
+            0.01,
+            0.017,
+            0.064,
+            0.212
+          ]
+        },
+        {
+          "id": "table_x/row/4",
+          "source_row": 4,
+          "model": "MAE-H/300",
+          "label": "MAE-H/300",
+          "columns": [
+            "sigma_0_05",
+            "sigma_0_10",
+            "sigma_0_20",
+            "sigma_0_30"
+          ],
+          "x": [
+            0.05,
+            0.1,
+            0.2,
+            0.3
+          ],
+          "y": [
+            0.169,
+            0.319,
+            0.339,
+            0.337
+          ]
+        },
+        {
+          "id": "table_x/row/5",
+          "source_row": 5,
+          "model": "EVA-X-B/300",
+          "label": "EVA-X-B/300",
+          "columns": [
+            "sigma_0_05",
+            "sigma_0_10",
+            "sigma_0_20",
+            "sigma_0_30"
+          ],
+          "x": [
+            0.05,
+            0.1,
+            0.2,
+            0.3
+          ],
+          "y": [
+            0.125,
+            0.237,
+            0.285,
+            0.299
+          ]
+        },
+        {
+          "id": "table_x/row/6",
+          "source_row": 6,
+          "model": "RAD-DINO-B/300",
+          "label": "RAD-DINO-B/300",
+          "columns": [
+            "sigma_0_05",
+            "sigma_0_10",
+            "sigma_0_20",
+            "sigma_0_30"
+          ],
+          "x": [
+            0.05,
+            0.1,
+            0.2,
+            0.3
+          ],
+          "y": [
+            0.164,
+            0.464,
+            0.701,
+            0.711
+          ]
+        }
+      ],
+      "size_inches": [
+        13.2,
+        7.4
+      ],
+      "png_dpi": 180,
+      "files": [
+        {
+          "file": "post_training.png",
+          "sha256": "57a9ad5320f15facd1bcfc00a1a5efa75f548a853c8dd50a4d75aca7030fe96e"
+        },
+        {
+          "file": "post_training.svg",
+          "sha256": "33c0f9ac463a88ec7155b187d5bd0323f7faa3cfa8b2ea304980d0eaf6640ec5"
+        },
+        {
+          "file": "post_training.pdf",
+          "sha256": "43aa1abc4de82600da46463f3b44a557533e7d3a4b18d6650ca787ff8a0f945e"
+        }
+      ]
+    },
+    {
+      "name": "lesion_tradeoff",
+      "caption": "Left: Table VIII lesion-minus-matched-control logit drop with the reported 95% bootstrap confidence intervals; bootstrap sample count is not specified in the aggregate tables. Right: Table XI pairs cosine drift at σ = 0.20 with lesion-specific logit drop for all five reported models. The two panels use different checkpoint sets, shown by their labels. No confidence intervals are inferred for Table XI and no trend or regression is fitted. Cosine drift is dimensionless and shown over its full 0–2 range; lesion differences are in logit units.",
+      "alt": "A forest plot shows larger lesion-minus-control logit drops for the three I-JEPA checkpoints than for the two MAE checkpoints, with reported confidence intervals. A separate scatter plot shows that the lowest-drift post-training variant, TexJEPA-C, also has a small lesion-specific logit drop.",
+      "selected_source_tables": [
+        {
+          "id": "table_viii",
+          "table": "VIII",
+          "title": "Lesion sensitivity measured by Delta Logit Drop (Δ_lesion).",
+          "table_kind": "numeric_results",
+          "evidence": "paper_reported",
+          "dataset_type": "aggregate_experimental_results",
+          "source": {
+            "path": "texjepa-manuscript",
+            "pdf_page": 8,
+            "table": "VIII"
+          },
+          "csv": "csv/table_viii.csv",
+          "columns": [
+            {
+              "key": "model",
+              "label": "Model",
+              "type": "string",
+              "unit": null
+            },
+            {
+              "key": "delta_lesion",
+              "label": "Δ_lesion",
+              "type": "number",
+              "unit": "logit difference",
+              "decimal_places": 3
+            },
+            {
+              "key": "ci95_lower",
+              "label": "95% CI lower",
+              "type": "number",
+              "unit": "logit difference",
+              "decimal_places": 3
+            },
+            {
+              "key": "ci95_upper",
+              "label": "95% CI upper",
+              "type": "number",
+              "unit": "logit difference",
+              "decimal_places": 3
+            }
+          ],
+          "rows": [
+            {
+              "model": "I-JEPA-H/300",
+              "delta_lesion": 0.222,
+              "ci95_lower": 0.199,
+              "ci95_upper": 0.247
+            },
+            {
+              "model": "I-JEPA-H/201",
+              "delta_lesion": 0.195,
+              "ci95_lower": 0.167,
+              "ci95_upper": 0.223
+            },
+            {
+              "model": "I-JEPA-H/95",
+              "delta_lesion": 0.19,
+              "ci95_lower": 0.161,
+              "ci95_upper": 0.22
+            },
+            {
+              "model": "MAE-H/97",
+              "delta_lesion": 0.066,
+              "ci95_lower": 0.053,
+              "ci95_upper": 0.078
+            },
+            {
+              "model": "MAE-H/300",
+              "delta_lesion": 0.039,
+              "ci95_lower": 0.025,
+              "ci95_upper": 0.053
+            }
+          ],
+          "reported_headers": [
+            "Model",
+            "Δ_lesion",
+            "95% CI"
+          ],
+          "reported_rows": [
+            [
+              "I-JEPA-H/300",
+              "0.222",
+              "[0.199, 0.247]"
+            ],
+            [
+              "I-JEPA-H/201",
+              "0.195",
+              "[0.167, 0.223]"
+            ],
+            [
+              "I-JEPA-H/95",
+              "0.190",
+              "[0.161, 0.220]"
+            ],
+            [
+              "MAE-H/97",
+              "0.066",
+              "[0.053, 0.078]"
+            ],
+            [
+              "MAE-H/300",
+              "0.039",
+              "[0.025, 0.053]"
+            ]
+          ],
+          "notes": [
+            "Δ_lesion is lesion logit drop minus the matched-control logit drop, as defined in Equation (3).",
+            "The source reports 95% confidence intervals. Figure 7 describes them as bootstrap confidence intervals; no bootstrap sample count is added here.",
+            "The CSV and numeric rows split the printed 95% CI into lower and upper bounds; reported_rows preserves the printed combined interval."
+          ],
+          "confidence_interval": {
+            "level": 0.95,
+            "method": "bootstrap",
+            "method_source": {
+              "path": "texjepa-manuscript",
+              "pdf_page": 10,
+              "figure": "7",
+              "location": "caption"
+            }
+          }
+        },
+        {
+          "id": "table_xi",
+          "table": "XI",
+          "title": "Robustness–semantics trade-off among post-training variants.",
+          "table_kind": "mixed_results_and_interpretation",
+          "evidence": "paper_reported",
+          "dataset_type": "aggregate_experimental_results",
+          "source": {
+            "path": "texjepa-manuscript",
+            "pdf_page": 10,
+            "table": "XI"
+          },
+          "csv": "csv/table_xi.csv",
+          "columns": [
+            {
+              "key": "model",
+              "label": "Model",
+              "type": "string",
+              "unit": null
+            },
+            {
+              "key": "delta_lesion",
+              "label": "Δ_lesion",
+              "type": "number",
+              "unit": "logit difference",
+              "decimal_places": 3
+            },
+            {
+              "key": "best_low_noise_auroc",
+              "label": "Best low-noise AUROC",
+              "type": "number",
+              "unit": "macro AUROC",
+              "decimal_places": 3
+            },
+            {
+              "key": "drift_sigma_0_20",
+              "label": "Drift at 0.20",
+              "type": "number",
+              "unit": "cosine drift",
+              "decimal_places": 3,
+              "sigma": 0.2
+            },
+            {
+              "key": "interpretation",
+              "label": "Interpretation",
+              "type": "string",
+              "unit": null
+            }
+          ],
+          "rows": [
+            {
+              "model": "v3.1 baseline",
+              "delta_lesion": 0.195,
+              "best_low_noise_auroc": 0.643,
+              "drift_sigma_0_20": 0.957,
+              "interpretation": "Strong lesion sensitivity but fragile at light noise"
+            },
+            {
+              "model": "v4 + noise",
+              "delta_lesion": 0.126,
+              "best_low_noise_auroc": 0.906,
+              "drift_sigma_0_20": 0.489,
+              "interpretation": "Balanced improvement from clean-target noise invariance"
+            },
+            {
+              "model": "v5 + register",
+              "delta_lesion": 0.177,
+              "best_low_noise_auroc": 0.92,
+              "drift_sigma_0_20": 0.781,
+              "interpretation": "Best clean/low-noise readout, but cliff at stronger noise"
+            },
+            {
+              "model": "v6 + var/cov",
+              "delta_lesion": 0.04,
+              "best_low_noise_auroc": 0.906,
+              "drift_sigma_0_20": 0.064,
+              "interpretation": "Smoothest feature space, but lesion sensitivity largely lost"
+            },
+            {
+              "model": "MAE-H/300",
+              "delta_lesion": 0.039,
+              "best_low_noise_auroc": 0.777,
+              "drift_sigma_0_20": 0.339,
+              "interpretation": "Stable reconstruction baseline with weak lesion-specific readout"
+            }
+          ],
+          "reported_headers": [
+            "Model",
+            "Δ_lesion",
+            "Best low-noise AUROC",
+            "Drift at 0.20",
+            "Interpretation"
+          ],
+          "reported_rows": [
+            [
+              "v3.1 baseline",
+              "0.195",
+              "0.643",
+              "0.957",
+              "Strong lesion sensitivity but fragile at light noise"
+            ],
+            [
+              "v4 + noise",
+              "0.126",
+              "0.906",
+              "0.489",
+              "Balanced improvement from clean-target noise invariance"
+            ],
+            [
+              "v5 + register",
+              "0.177",
+              "0.920",
+              "0.781",
+              "Best clean/low-noise readout, but cliff at stronger noise"
+            ],
+            [
+              "v6 + var/cov",
+              "0.040",
+              "0.906",
+              "0.064",
+              "Smoothest feature space, but lesion sensitivity largely lost"
+            ],
+            [
+              "MAE-H/300",
+              "0.039",
+              "0.777",
+              "0.339",
+              "Stable reconstruction baseline with weak lesion-specific readout"
+            ]
+          ],
+          "notes": [
+            "We retain the source heading Best low-noise AUROC. Its entries match the σ = 0.05 column in Table IX; the export does not recompute a maximum.",
+            "No confidence intervals are printed here for the post-training Δ_lesion results. None are inferred.",
+            "The Interpretation column records our qualitative interpretation rather than a separate measurement."
+          ]
+        }
+      ],
+      "palette": {
+        "description": "Nature Publishing Group-inspired categorical colors",
+        "model_colors": {
+          "baseline": "#3C5488",
+          "noise": "#4DBBD5",
+          "register": "#00A087",
+          "covariance": "#E64B35",
+          "mae": "#8491B4",
+          "eva": "#F39B7F",
+          "rad": "#7E6148"
+        }
+      },
+      "plotted_measurements": [
+        {
+          "id": "table_viii/row/0",
+          "model": "I-JEPA-H/300",
+          "x": [
+            0.222
+          ],
+          "y": [
+            0
+          ],
+          "ci95_lower": 0.199,
+          "ci95_upper": 0.247
+        },
+        {
+          "id": "table_viii/row/1",
+          "model": "I-JEPA-H/201",
+          "x": [
+            0.195
+          ],
+          "y": [
+            1
+          ],
+          "ci95_lower": 0.167,
+          "ci95_upper": 0.223
+        },
+        {
+          "id": "table_viii/row/2",
+          "model": "I-JEPA-H/95",
+          "x": [
+            0.19
+          ],
+          "y": [
+            2
+          ],
+          "ci95_lower": 0.161,
+          "ci95_upper": 0.22
+        },
+        {
+          "id": "table_viii/row/3",
+          "model": "MAE-H/97",
+          "x": [
+            0.066
+          ],
+          "y": [
+            3
+          ],
+          "ci95_lower": 0.053,
+          "ci95_upper": 0.078
+        },
+        {
+          "id": "table_viii/row/4",
+          "model": "MAE-H/300",
+          "x": [
+            0.039
+          ],
+          "y": [
+            4
+          ],
+          "ci95_lower": 0.025,
+          "ci95_upper": 0.053
+        },
+        {
+          "id": "table_xi/row/0",
+          "model": "v3.1 baseline",
+          "x": [
+            0.957
+          ],
+          "y": [
+            0.195
+          ]
+        },
+        {
+          "id": "table_xi/row/1",
+          "model": "v4 + noise",
+          "x": [
+            0.489
+          ],
+          "y": [
+            0.126
+          ]
+        },
+        {
+          "id": "table_xi/row/2",
+          "model": "v5 + register",
+          "x": [
+            0.781
+          ],
+          "y": [
+            0.177
+          ]
+        },
+        {
+          "id": "table_xi/row/3",
+          "model": "v6 + var/cov",
+          "x": [
+            0.064
+          ],
+          "y": [
+            0.04
+          ]
+        },
+        {
+          "id": "table_xi/row/4",
+          "model": "MAE-H/300",
+          "x": [
+            0.339
+          ],
+          "y": [
+            0.039
+          ]
+        }
+      ],
+      "size_inches": [
+        13.2,
+        7.0
+      ],
+      "png_dpi": 180,
+      "files": [
+        {
+          "file": "lesion_tradeoff.png",
+          "sha256": "162fde97ac14a7fbe1bc7b372be6b1bf828989ea57b36d92a1435dafcb0b5d1f"
+        },
+        {
+          "file": "lesion_tradeoff.svg",
+          "sha256": "af6e12c506db21b7ef6da2588d1d7cdd631d95ab37623d133d6885453f1e7838"
+        },
+        {
+          "file": "lesion_tradeoff.pdf",
+          "sha256": "865b299b29ed65b0dcc8ea8d9c013becbf3a7783270c1f3dbce77df2c66fff0a"
+        }
+      ]
+    },
+    {
+      "name": "frequency_and_probes",
+      "caption": "Left: Table VI, I-JEPA-H/300 frozen linear-probe AUROC for every reported frequency condition; cutoffs and bands are normalized frequencies. Right: Table VII, clean and Gaussian-noise σ = 0.05 AUROC for all six model/protocol combinations. Hollow circles show clean inputs and solid squares show noise. Both panels use the same AUROC range, 0.40–1.00. The source table’s missing clean drift/drop and MLP drift entries are retained as null in the manifest and are not plotted or filled in. This figure plots original AUROCs only; the reported Table VI Drop discrepancy is unchanged.",
+      "alt": "A point plot shows I-JEPA-H/300 AUROC for clean, low-pass and three band-corruption conditions, with the largest loss in the middle band. A paired point plot shows clean and noise AUROC for linear, MLP and partial fine-tuning protocols for I-JEPA-H/300 and MAE-H/300.",
+      "selected_source_tables": [
+        {
+          "id": "table_vi",
+          "table": "VI",
+          "title": "Frequency sensitivity of I-JEPA-H/300 under linear probing.",
+          "table_kind": "numeric_results",
+          "evidence": "paper_reported",
+          "dataset_type": "aggregate_experimental_results",
+          "source": {
+            "path": "texjepa-manuscript",
+            "pdf_page": 7,
+            "table": "VI"
+          },
+          "csv": "csv/table_vi.csv",
+          "columns": [
+            {
+              "key": "condition",
+              "label": "Condition",
+              "type": "string",
+              "unit": null
+            },
+            {
+              "key": "auroc",
+              "label": "AUROC",
+              "type": "number",
+              "unit": "macro AUROC",
+              "decimal_places": 3
+            },
+            {
+              "key": "drop",
+              "label": "Drop",
+              "type": "number",
+              "unit": "AUROC difference",
+              "decimal_places": 3
+            },
+            {
+              "key": "drift",
+              "label": "Drift",
+              "type": "number",
+              "unit": "cosine drift",
+              "decimal_places": 3
+            }
+          ],
+          "rows": [
+            {
+              "condition": "Clean",
+              "auroc": 0.91,
+              "drop": null,
+              "drift": null
+            },
+            {
+              "condition": "Low-pass cutoff 0.15",
+              "auroc": 0.67,
+              "drop": -0.24,
+              "drift": 0.437
+            },
+            {
+              "condition": "Band corrupt 0.00–0.20",
+              "auroc": 0.847,
+              "drop": -0.063,
+              "drift": 0.11
+            },
+            {
+              "condition": "Band corrupt 0.20–0.45",
+              "auroc": 0.594,
+              "drop": -0.317,
+              "drift": 0.752
+            },
+            {
+              "condition": "Band corrupt 0.45–1.00",
+              "auroc": 0.618,
+              "drop": -0.292,
+              "drift": 0.622
+            }
+          ],
+          "reported_headers": [
+            "Condition",
+            "AUROC",
+            "Drop",
+            "Drift"
+          ],
+          "reported_rows": [
+            [
+              "Clean",
+              "0.910",
+              "–",
+              "–"
+            ],
+            [
+              "Low-pass cutoff 0.15",
+              "0.670",
+              "−0.240",
+              "0.437"
+            ],
+            [
+              "Band corrupt 0.00–0.20",
+              "0.847",
+              "−0.063",
+              "0.110"
+            ],
+            [
+              "Band corrupt 0.20–0.45",
+              "0.594",
+              "−0.317",
+              "0.752"
+            ],
+            [
+              "Band corrupt 0.45–1.00",
+              "0.618",
+              "−0.292",
+              "0.622"
+            ]
+          ],
+          "notes": [
+            "Frequency cutoffs and band limits are normalized frequencies, as specified in Section IV.C.",
+            "Drop follows Equation (1): perturbed AUROC minus clean AUROC. Negative values indicate degradation.",
+            "The mid-band row prints Drop = -0.317, whereas 0.594 - 0.910 from the displayed AUROCs is -0.316. We preserve -0.317 without inferring additional precision.",
+            "The Clean row uses dashes for Drop and Drift. These remain null; we do not insert zeros."
+          ],
+          "missing_cells": [
+            {
+              "row_index": 0,
+              "column": "drop",
+              "reported": "–",
+              "reason": "dash_in_source"
+            },
+            {
+              "row_index": 0,
+              "column": "drift",
+              "reported": "–",
+              "reason": "dash_in_source"
+            }
+          ]
+        },
+        {
+          "id": "table_vii",
+          "table": "VII",
+          "title": "Probe capacity and partial fine-tuning under Gaussian noise. Drift is measured at noise standard deviation 0.05.",
+          "table_kind": "numeric_results",
+          "evidence": "paper_reported",
+          "dataset_type": "aggregate_experimental_results",
+          "source": {
+            "path": "texjepa-manuscript",
+            "pdf_page": 8,
+            "table": "VII"
+          },
+          "csv": "csv/table_vii.csv",
+          "columns": [
+            {
+              "key": "model",
+              "label": "Model",
+              "type": "string",
+              "unit": null
+            },
+            {
+              "key": "protocol",
+              "label": "Protocol",
+              "type": "string",
+              "unit": null
+            },
+            {
+              "key": "clean",
+              "label": "Clean",
+              "type": "number",
+              "unit": "macro AUROC",
+              "decimal_places": 3,
+              "condition": "clean"
+            },
+            {
+              "key": "sigma_0_05",
+              "label": "0.05",
+              "type": "number",
+              "unit": "macro AUROC",
+              "decimal_places": 3,
+              "condition": "gaussian_noise",
+              "sigma": 0.05,
+              "sigma_unit": "input intensity standard deviation; numeric scale as specified by the evaluation preprocessing"
+            },
+            {
+              "key": "sigma_0_10",
+              "label": "0.10",
+              "type": "number",
+              "unit": "macro AUROC",
+              "decimal_places": 3,
+              "condition": "gaussian_noise",
+              "sigma": 0.1,
+              "sigma_unit": "input intensity standard deviation; numeric scale as specified by the evaluation preprocessing"
+            },
+            {
+              "key": "sigma_0_20",
+              "label": "0.20",
+              "type": "number",
+              "unit": "macro AUROC",
+              "decimal_places": 3,
+              "condition": "gaussian_noise",
+              "sigma": 0.2,
+              "sigma_unit": "input intensity standard deviation; numeric scale as specified by the evaluation preprocessing"
+            },
+            {
+              "key": "sigma_0_30",
+              "label": "0.30",
+              "type": "number",
+              "unit": "macro AUROC",
+              "decimal_places": 3,
+              "condition": "gaussian_noise",
+              "sigma": 0.3,
+              "sigma_unit": "input intensity standard deviation; numeric scale as specified by the evaluation preprocessing"
+            },
+            {
+              "key": "drift_sigma_0_05",
+              "label": "Drift",
+              "type": "number",
+              "unit": "cosine drift",
+              "decimal_places": 3,
+              "sigma": 0.05
+            }
+          ],
+          "rows": [
+            {
+              "model": "I-JEPA-H/300",
+              "protocol": "Linear probe",
+              "clean": 0.91,
+              "sigma_0_05": 0.641,
+              "sigma_0_10": 0.589,
+              "sigma_0_20": 0.571,
+              "sigma_0_30": 0.553,
+              "drift_sigma_0_05": 0.755
+            },
+            {
+              "model": "I-JEPA-H/300",
+              "protocol": "MLP probe",
+              "clean": 0.927,
+              "sigma_0_05": 0.678,
+              "sigma_0_10": 0.573,
+              "sigma_0_20": 0.582,
+              "sigma_0_30": 0.571,
+              "drift_sigma_0_05": null
+            },
+            {
+              "model": "I-JEPA-H/300",
+              "protocol": "Partial FT",
+              "clean": 0.935,
+              "sigma_0_05": 0.625,
+              "sigma_0_10": 0.587,
+              "sigma_0_20": 0.555,
+              "sigma_0_30": 0.534,
+              "drift_sigma_0_05": 0.78
+            },
+            {
+              "model": "MAE-H/300",
+              "protocol": "Linear probe",
+              "clean": 0.891,
+              "sigma_0_05": 0.777,
+              "sigma_0_10": 0.618,
+              "sigma_0_20": 0.49,
+              "sigma_0_30": 0.485,
+              "drift_sigma_0_05": 0.169
+            },
+            {
+              "model": "MAE-H/300",
+              "protocol": "MLP probe",
+              "clean": 0.925,
+              "sigma_0_05": 0.786,
+              "sigma_0_10": 0.568,
+              "sigma_0_20": 0.471,
+              "sigma_0_30": 0.464,
+              "drift_sigma_0_05": null
+            },
+            {
+              "model": "MAE-H/300",
+              "protocol": "Partial FT",
+              "clean": 0.949,
+              "sigma_0_05": 0.82,
+              "sigma_0_10": 0.588,
+              "sigma_0_20": 0.462,
+              "sigma_0_30": 0.485,
+              "drift_sigma_0_05": 0.689
+            }
+          ],
+          "reported_headers": [
+            "Model",
+            "Protocol",
+            "Clean",
+            "0.05",
+            "0.10",
+            "0.20",
+            "0.30",
+            "Drift"
+          ],
+          "reported_rows": [
+            [
+              "I-JEPA-H/300",
+              "Linear probe",
+              "0.910",
+              "0.641",
+              "0.589",
+              "0.571",
+              "0.553",
+              "0.755"
+            ],
+            [
+              "I-JEPA-H/300",
+              "MLP probe",
+              "0.927",
+              "0.678",
+              "0.573",
+              "0.582",
+              "0.571",
+              "–"
+            ],
+            [
+              "I-JEPA-H/300",
+              "Partial FT",
+              "0.935",
+              "0.625",
+              "0.587",
+              "0.555",
+              "0.534",
+              "0.780"
+            ],
+            [
+              "MAE-H/300",
+              "Linear probe",
+              "0.891",
+              "0.777",
+              "0.618",
+              "0.490",
+              "0.485",
+              "0.169"
+            ],
+            [
+              "MAE-H/300",
+              "MLP probe",
+              "0.925",
+              "0.786",
+              "0.568",
+              "0.471",
+              "0.464",
+              "–"
+            ],
+            [
+              "MAE-H/300",
+              "Partial FT",
+              "0.949",
+              "0.820",
+              "0.588",
+              "0.462",
+              "0.485",
+              "0.689"
+            ]
+          ],
+          "notes": [
+            "The Drift column applies only to σ = 0.05. The two MLP drift cells are dashes in the source and remain null."
+          ],
+          "missing_cells": [
+            {
+              "row_index": 1,
+              "column": "drift_sigma_0_05",
+              "reported": "–",
+              "reason": "not_reported"
+            },
+            {
+              "row_index": 4,
+              "column": "drift_sigma_0_05",
+              "reported": "–",
+              "reason": "not_reported"
+            }
+          ]
+        }
+      ],
+      "palette": {
+        "description": "Nature Publishing Group-inspired categorical colors",
+        "model_colors": {
+          "baseline": "#3C5488",
+          "noise": "#4DBBD5",
+          "register": "#00A087",
+          "covariance": "#E64B35",
+          "mae": "#8491B4",
+          "eva": "#F39B7F",
+          "rad": "#7E6148"
+        }
+      },
+      "plotted_measurements": [
+        {
+          "id": "table_vi/row/0",
+          "condition": "Clean",
+          "x": [
+            0.91
+          ],
+          "y": [
+            0
+          ]
+        },
+        {
+          "id": "table_vi/row/1",
+          "condition": "Low-pass cutoff 0.15",
+          "x": [
+            0.67
+          ],
+          "y": [
+            1
+          ]
+        },
+        {
+          "id": "table_vi/row/2",
+          "condition": "Band corrupt 0.00–0.20",
+          "x": [
+            0.847
+          ],
+          "y": [
+            2
+          ]
+        },
+        {
+          "id": "table_vi/row/3",
+          "condition": "Band corrupt 0.20–0.45",
+          "x": [
+            0.594
+          ],
+          "y": [
+            3
+          ]
+        },
+        {
+          "id": "table_vi/row/4",
+          "condition": "Band corrupt 0.45–1.00",
+          "x": [
+            0.618
+          ],
+          "y": [
+            4
+          ]
+        },
+        {
+          "id": "table_vii/row/0",
+          "model": "I-JEPA-H/300",
+          "protocol": "Linear probe",
+          "clean": 0.91,
+          "sigma_0_05": 0.641,
+          "position": 0
+        },
+        {
+          "id": "table_vii/row/1",
+          "model": "I-JEPA-H/300",
+          "protocol": "MLP probe",
+          "clean": 0.927,
+          "sigma_0_05": 0.678,
+          "position": 1
+        },
+        {
+          "id": "table_vii/row/2",
+          "model": "I-JEPA-H/300",
+          "protocol": "Partial FT",
+          "clean": 0.935,
+          "sigma_0_05": 0.625,
+          "position": 2
+        },
+        {
+          "id": "table_vii/row/3",
+          "model": "MAE-H/300",
+          "protocol": "Linear probe",
+          "clean": 0.891,
+          "sigma_0_05": 0.777,
+          "position": 3.5
+        },
+        {
+          "id": "table_vii/row/4",
+          "model": "MAE-H/300",
+          "protocol": "MLP probe",
+          "clean": 0.925,
+          "sigma_0_05": 0.786,
+          "position": 4.5
+        },
+        {
+          "id": "table_vii/row/5",
+          "model": "MAE-H/300",
+          "protocol": "Partial FT",
+          "clean": 0.949,
+          "sigma_0_05": 0.82,
+          "position": 5.5
+        }
+      ],
+      "size_inches": [
+        13.2,
+        7.0
+      ],
+      "png_dpi": 180,
+      "files": [
+        {
+          "file": "frequency_and_probes.png",
+          "sha256": "a0d05e0b3d98426b28eb27d1beebe97f1a299915a6971618388f4c7d5426ea11"
+        },
+        {
+          "file": "frequency_and_probes.svg",
+          "sha256": "011ca0fbb0b0152d86b478977cdd22b6b90693320d4d33fa36da831c586aba33"
+        },
+        {
+          "file": "frequency_and_probes.pdf",
+          "sha256": "b8513d36d853272bc2d9841115152ca39dc9ce9418814e0796837bb7efc23880"
+        }
+      ]
+    }
+  ]
+}

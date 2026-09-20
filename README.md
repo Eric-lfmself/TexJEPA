@@ -17,7 +17,11 @@
 
 **Clean accuracy tells only part of the story.** We study how chest X-ray encoders use radiographic texture: sensitivity to fine lesion detail can also make a representation fragile to image noise. TexJEPA combines controlled diagnostics with three I-JEPA post-training variants to examine the balance between classification, noise robustness, and lesion sensitivity.
 
-![TexJEPA study overview: compare I-JEPA and MAE, measure classification, feature drift and lesion sensitivity, then evaluate three I-JEPA post-training variants.](docs/assets/overview.svg)
+![TexJEPA framework: a trainable noisy-context encoder predicts clean EMA target representations; post-training branches into noise, register, and variance/covariance variants, followed by classification, drift, and lesion diagnostics.](docs/assets/framework.svg)
+
+<p align="center"><em>Predict clean representations from noisy context. Evaluate what becomes stable—and what remains lesion-sensitive.</em></p>
+
+The training panel shows feature flow and the EMA update; the variant panel shows that TexJEPA-R and TexJEPA-C share the same TexJEPA-N parent. [Full-size framework](docs/assets/framework.svg) · [Diagram guide](docs/assets/README.md) · [Objectives and implementation](docs/METHODS.md)
 
 We provide the training and evaluation code, aggregate experimental results, and a small CPU demonstration that requires no images or checkpoints.
 
@@ -34,14 +38,9 @@ Noisy AUROC and cosine drift are measured at Gaussian σ = 0.05. Lesion sensitiv
 
 **I-JEPA has stronger clean discrimination and lesion sensitivity, while MAE is more stable under light noise.** This motivates evaluating these properties together.
 
-<details>
-<summary><strong>View the noise curves, representation drift, and lesion confidence intervals</strong></summary>
+![Baseline robustness: frozen linear-probe macro AUROC and cosine representation drift for I-JEPA-H/300 and MAE-H/300 across Gaussian noise levels.](results/paper/figures/readme/baseline_robustness.png)
 
-![Reported Gaussian-noise AUROC and cosine drift for I-JEPA and MAE, with 95% bootstrap confidence intervals for lesion sensitivity.](results/paper/figures/main_results.png)
-
-The lesion plot also includes earlier checkpoints. Download the figure as [PDF](results/paper/figures/main_results.pdf) or [SVG](results/paper/figures/main_results.svg).
-
-</details>
+*Tables IV–V. Markers show reported measurements; connecting lines join the tested noise levels. Cosine drift is 1 − cosine similarity. [Vector figure](results/paper/figures/readme/baseline_robustness.svg).*
 
 ## TexJEPA post-training
 
@@ -53,19 +52,39 @@ We start from **I-JEPA-H/201 (`v3.1`)** and train a noisy context branch to pred
 | **TexJEPA-N** (`v4`) | Asymmetric context noise | 0.918 | 0.906 | 0.126 |
 | **TexJEPA-R** (`v5`) | Noise + four register tokens + tighter masking | **0.930** | **0.920** | 0.177 |
 | **TexJEPA-C** (`v6`) | Noise + patch variance/covariance regularization | 0.916 | 0.906 | 0.040 |
+| MAE-H/300 | Reconstruction baseline | 0.891 | 0.777 | 0.039 |
+| EVA-X-B/300 | External encoder | 0.933 | 0.836 | — |
+| RAD-DINO-B/300 | External encoder | 0.935 | 0.871 | — |
 
-These results use the post-training comparison's checkpoint selections, distinct from the H/300 comparison above. Sources: [Table XI](results/paper/csv/table_xi.csv) and [Table XII](results/paper/csv/table_xii.csv).
+The post-training baseline is H/201, distinct from the H/300 baseline above. Bold values compare the four I-JEPA variants; the three external rows provide context. A dash indicates that Table XI does not report a lesion score. Sources: [Table XI](results/paper/csv/table_xi.csv) and [Table XII](results/paper/csv/table_xii.csv).
 
 TexJEPA-R gives the strongest clean and light-noise readout among these variants. TexJEPA-C has the lowest drift at σ = 0.20, but substantially lower lesion sensitivity. The [method guide](docs/METHODS.md#texjepa-post-training) gives the objectives, masking changes, and checkpoint lineage.
 
-<details>
-<summary><strong>View the full post-training comparison</strong></summary>
+![Post-training robustness and drift across all seven reported encoders: the H/201 baseline, TexJEPA-N, TexJEPA-R, TexJEPA-C, MAE, EVA-X, and RAD-DINO.](results/paper/figures/readme/post_training.png)
 
-![Reported post-training AUROC, cosine drift, and lesion sensitivity for v3.1, v4, v5, and v6.](results/paper/figures/post_training_results.png)
+*Tables IX–X. All seven encoders are shown. TexJEPA-R's light-noise advantage does not persist across the entire noise range; TexJEPA-C's lower drift must be considered alongside its lesion sensitivity. [Vector figure](results/paper/figures/readme/post_training.svg).*
 
-Download the figure as [PDF](results/paper/figures/post_training_results.pdf) or [SVG](results/paper/figures/post_training_results.svg). All 13 manuscript tables, supplementary values, and Figure 4 annotations are available in the [results package](results/paper/README.md).
+## Lesion sensitivity and the stability trade-off
 
-</details>
+We compare lesion occlusion with five area-matched non-lesion controls. A larger excess target-class logit drop means the readout is more sensitive to the annotated lesion region.
+
+![Lesion sensitivity with reported 95% bootstrap confidence intervals, alongside the paired representation-drift and lesion-sensitivity trade-off for post-training variants.](results/paper/figures/readme/lesion_tradeoff.png)
+
+*Left: Table VIII's reported point estimates and 95% bootstrap confidence intervals. Right: Table XI's paired drift at σ = 0.20 and lesion scores, without inferred intervals or a fitted trend. The H/300 checkpoint comparison and H/201 post-training comparison retain their separate contexts. [Source data](results/paper/csv/table_xi.csv) · [Vector figure](results/paper/figures/readme/lesion_tradeoff.svg).*
+
+The post-training comparison exposes different outcomes: TexJEPA-R retains more lesion sensitivity than N or C, while TexJEPA-C produces the smallest drift. Our evaluation makes both properties visible rather than reducing them to a single score.
+
+## Frequency interventions and probe protocols
+
+Frequency interventions test which image information the encoder depends on. Probe comparisons test whether changing the readout or partially fine-tuning the encoder resolves the sensitivity to noise.
+
+![Frequency-intervention AUROC for I-JEPA-H/300, and clean versus light-noise AUROC for all six I-JEPA and MAE probe-protocol combinations.](results/paper/figures/readme/frequency_and_probes.png)
+
+*Left: Table VI's original AUROC values. Right: Table VII's clean and Gaussian σ = 0.05 AUROC for linear probing, MLP probing, and partial fine-tuning. Missing drift entries are not inferred. [Frequency data](results/paper/csv/table_vi.csv) · [Probe data](results/paper/csv/table_vii.csv) · [Vector figure](results/paper/figures/readme/frequency_and_probes.svg).*
+
+For I-JEPA-H/300, partial fine-tuning raises clean AUROC from **0.910 to 0.935**, while AUROC at σ = 0.05 changes from **0.641 to 0.625**. A stronger clean readout alone does not establish robustness.
+
+All **13 tables**, **26 supplementary records**, and **90 Figure 4 annotations** are available in the [results package](results/paper/README.md). Each gallery figure includes its source records and export hashes in the [figure manifest](results/paper/figures/readme/manifest.json).
 
 ## Quick start
 
@@ -95,7 +114,7 @@ The demo runs the diagnostic workflow with synthetic images and small randomly i
 ### 3. Explore figures or run the tests
 
 ```sh
-python -m scripts.plot_paper_results --output outputs/paper_figures
+python -m scripts.plot_readme_results --output outputs/readme_figures
 python -m pytest
 ```
 

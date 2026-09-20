@@ -1,0 +1,225 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1080" viewBox="0 0 1600 1080" role="img" aria-labelledby="title desc">
+<title id="title">TexJEPA: asymmetric latent prediction, model lineage, and evaluation</title>
+<desc id="desc">A schematic chest image splits into a corrupted visible-context branch and a clean full-image EMA target branch. Target patches are removed before context-encoder attention. The predictor uses visible context features and target queries with positions. Clean target features are normalized and selected, with stop-gradient, for block-averaged Smooth-L1 prediction. The context encoder updates the target encoder by EMA. TexJEPA-C adds variance and covariance losses on visible context patch tokens before the predictor. TexJEPA-R and TexJEPA-C branch independently from TexJEPA-N at epoch 50. Evaluation distinguishes direct feature drift, probe classification, and classification-aligned lesion occlusion with five matched controls. All chest images are schematic illustrations, not patient data.</desc>
+<defs>
+<marker id="aN" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#3C5488" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></marker>
+<marker id="aT" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#00A087" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></marker>
+<marker id="aC" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#E64B35" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></marker>
+<marker id="aS" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#8491B4" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></marker>
+</defs>
+<rect width="1600" height="1080" fill="#FFFFFF"/>
+<g font-family="Arial, Helvetica, sans-serif" text-rendering="geometricPrecision">
+<text x="34" y="53" font-size="40" fill="#3C5488" font-weight="700" text-anchor="start">TexJEPA</text>
+<text x="253" y="51" font-size="27" fill="#24364A" font-weight="400" text-anchor="start">Learning stable chest X-ray representations</text>
+<rect x="28" y="87" width="1544" height="585" rx="16" fill="#FFFFFF" stroke="#DDE4EA" stroke-width="1.7"/>
+<text x="57" y="134" font-size="32" fill="#3C5488" font-weight="700" text-anchor="start">a</text>
+<text x="99" y="134" font-size="32" fill="#24364A" font-weight="700" text-anchor="start">Asymmetric latent prediction</text>
+<text x="1508" y="133" font-size="18" fill="#667383" font-weight="700" text-anchor="end">POST-TRAINING</text>
+<g transform="translate(75 331) scale(1.0)">
+<rect x="0" y="0" width="112" height="112" rx="7" fill="#F5F7F7" stroke="#BFCBD5" stroke-width="1.6"/>
+<path d="M 50 15 C 39 11 19 31 17 58 C 14 82 24 97 43 98 C 50 91 49 74 50 58 Z M 62 15 C 73 11 93 31 95 58 C 98 82 88 97 69 98 C 61 91 63 74 62 58 Z" fill="#E4EBEE" stroke="#8491B4" stroke-width="1.7"/>
+<path d="M 56 10 L 56 90 M 56 22 L 42 36 M 56 22 L 70 36" stroke="#8491B4" stroke-width="2" fill="none"/>
+<path d="M 21 32 Q 36 22 49 33 M 63 33 Q 76 22 91 32" fill="none" stroke="#B5C2CC" stroke-width="1.3"/>
+<path d="M 21 43 Q 36 33 49 44 M 63 44 Q 76 33 91 43" fill="none" stroke="#B5C2CC" stroke-width="1.3"/>
+<path d="M 21 54 Q 36 44 49 55 M 63 55 Q 76 44 91 54" fill="none" stroke="#B5C2CC" stroke-width="1.3"/>
+<path d="M 21 65 Q 36 55 49 66 M 63 66 Q 76 55 91 65" fill="none" stroke="#B5C2CC" stroke-width="1.3"/>
+<path d="M 21 76 Q 36 66 49 77 M 63 77 Q 76 66 91 76" fill="none" stroke="#B5C2CC" stroke-width="1.3"/>
+<path d="M 28 0 V 112 M 0 28 H 112" fill="none" stroke="#8491B4" stroke-width="1.1" opacity=".75"/>
+<path d="M 56 0 V 112 M 0 56 H 112" fill="none" stroke="#8491B4" stroke-width="1.1" opacity=".75"/>
+<path d="M 84 0 V 112 M 0 84 H 112" fill="none" stroke="#8491B4" stroke-width="1.1" opacity=".75"/>
+</g>
+<text x="131" y="475" font-size="24" fill="#24364A" font-weight="600" text-anchor="middle">Clean image</text>
+<text x="131" y="500" font-size="20" fill="#667383" font-weight="400" text-anchor="middle">schematic</text>
+<path d="M 188 387 H 231 V 268 H 296" fill="none" stroke="#3C5488" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#aN)"/>
+<path d="M 231 387 V 551 H 486" fill="none" stroke="#00A087" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#aT)"/>
+<circle cx="231" cy="387" r="4.5" fill="#3C5488" stroke="none"/>
+<text x="351" y="203" font-size="23" fill="#3C5488" font-weight="600" text-anchor="middle">Corrupt + mask</text>
+<g transform="translate(299 216) scale(0.9285714285714286)">
+<rect x="0" y="0" width="112" height="112" rx="7" fill="#F5F7F7" stroke="#BFCBD5" stroke-width="1.6"/>
+<path d="M 50 15 C 39 11 19 31 17 58 C 14 82 24 97 43 98 C 50 91 49 74 50 58 Z M 62 15 C 73 11 93 31 95 58 C 98 82 88 97 69 98 C 61 91 63 74 62 58 Z" fill="#E4EBEE" stroke="#8491B4" stroke-width="1.7"/>
+<path d="M 56 10 L 56 90 M 56 22 L 42 36 M 56 22 L 70 36" stroke="#8491B4" stroke-width="2" fill="none"/>
+<path d="M 21 32 Q 36 22 49 33 M 63 33 Q 76 22 91 32" fill="none" stroke="#B5C2CC" stroke-width="1.3"/>
+<path d="M 21 43 Q 36 33 49 44 M 63 44 Q 76 33 91 43" fill="none" stroke="#B5C2CC" stroke-width="1.3"/>
+<path d="M 21 54 Q 36 44 49 55 M 63 55 Q 76 44 91 54" fill="none" stroke="#B5C2CC" stroke-width="1.3"/>
+<path d="M 21 65 Q 36 55 49 66 M 63 66 Q 76 55 91 65" fill="none" stroke="#B5C2CC" stroke-width="1.3"/>
+<path d="M 21 76 Q 36 66 49 77 M 63 77 Q 76 66 91 76" fill="none" stroke="#B5C2CC" stroke-width="1.3"/>
+<path d="M 28 0 V 112 M 0 28 H 112" fill="none" stroke="#8491B4" stroke-width="1.1" opacity=".75"/>
+<path d="M 56 0 V 112 M 0 56 H 112" fill="none" stroke="#8491B4" stroke-width="1.1" opacity=".75"/>
+<path d="M 84 0 V 112 M 0 84 H 112" fill="none" stroke="#8491B4" stroke-width="1.1" opacity=".75"/>
+<circle cx="12" cy="13" r="2.2" fill="#E64B35" stroke="none"/>
+<circle cx="41" cy="10" r="2.2" fill="#E64B35" stroke="none"/>
+<circle cx="92" cy="11" r="2.2" fill="#E64B35" stroke="none"/>
+<circle cx="22" cy="40" r="2.2" fill="#E64B35" stroke="none"/>
+<circle cx="65" cy="36" r="2.2" fill="#E64B35" stroke="none"/>
+<circle cx="106" cy="40" r="2.2" fill="#E64B35" stroke="none"/>
+<circle cx="8" cy="77" r="2.2" fill="#E64B35" stroke="none"/>
+<circle cx="50" cy="70" r="2.2" fill="#E64B35" stroke="none"/>
+<circle cx="99" cy="94" r="2.2" fill="#E64B35" stroke="none"/>
+<circle cx="71" cy="103" r="2.2" fill="#E64B35" stroke="none"/>
+<circle cx="40" cy="98" r="2.2" fill="#E64B35" stroke="none"/>
+<circle cx="80" cy="75" r="2.2" fill="#E64B35" stroke="none"/>
+<rect x="57.4" y="1.4" width="25.2" height="25.2" rx="1" fill="#FFF" stroke="#B5C2CC" stroke-width="1"/>
+<rect x="85.4" y="1.4" width="25.2" height="25.2" rx="1" fill="#FFF" stroke="#B5C2CC" stroke-width="1"/>
+<rect x="57.4" y="29.4" width="25.2" height="25.2" rx="1" fill="#FFF" stroke="#B5C2CC" stroke-width="1"/>
+<rect x="85.4" y="29.4" width="25.2" height="25.2" rx="1" fill="#FFF" stroke="#B5C2CC" stroke-width="1"/>
+<rect x="1.4" y="85.4" width="25.2" height="25.2" rx="1" fill="#FFF" stroke="#B5C2CC" stroke-width="1"/>
+<rect x="29.4" y="85.4" width="25.2" height="25.2" rx="1" fill="#FFF" stroke="#B5C2CC" stroke-width="1"/>
+</g>
+<text x="351" y="354" font-size="22" fill="#3C5488" font-weight="600" text-anchor="middle">Noisy visible patches</text>
+<text x="351" y="383" font-size="20" fill="#667383" font-weight="400" text-anchor="middle">Target patches removed</text>
+<text x="351" y="410" font-size="19" fill="#E64B35" font-weight="400" text-anchor="middle">Gaussian · Poisson · JPEG</text>
+<path d="M 404 268 H 486" fill="none" stroke="#3C5488" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#aN)"/>
+<rect x="486" y="222" width="181" height="92" rx="11" fill="#EEF2F8" stroke="#3C5488" stroke-width="2"/>
+<text x="576" y="258" font-size="22" fill="#3C5488" font-weight="600" text-anchor="middle">Context encoder</text>
+<text x="576" y="292" font-size="23" fill="#3C5488" font-weight="400" text-anchor="middle">fθ · trainable</text>
+<path d="M 667 268 H 714" fill="none" stroke="#3C5488" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#aN)"/>
+<rect x="719" y="233" width="20" height="20" rx="2" fill="#D7E2F1" stroke="#3C5488" stroke-width="1.2"/>
+<rect x="744" y="233" width="20" height="20" rx="2" fill="#A4B8D5" stroke="#3C5488" stroke-width="1.2"/>
+<rect x="769" y="233" width="20" height="20" rx="2" fill="#6D8BB6" stroke="#3C5488" stroke-width="1.2"/>
+<rect x="719" y="258" width="20" height="20" rx="2" fill="#A4B8D5" stroke="#3C5488" stroke-width="1.2"/>
+<rect x="744" y="258" width="20" height="20" rx="2" fill="#6D8BB6" stroke="#3C5488" stroke-width="1.2"/>
+<rect x="769" y="258" width="20" height="20" rx="2" fill="#D7E2F1" stroke="#3C5488" stroke-width="1.2"/>
+<rect x="719" y="283" width="20" height="20" rx="2" fill="#6D8BB6" stroke="#3C5488" stroke-width="1.2"/>
+<rect x="744" y="283" width="20" height="20" rx="2" fill="#D7E2F1" stroke="#3C5488" stroke-width="1.2"/>
+<rect x="769" y="283" width="20" height="20" rx="2" fill="#A4B8D5" stroke="#3C5488" stroke-width="1.2"/>
+<text x="754" y="341" font-size="21" fill="#3C5488" font-weight="600" text-anchor="middle">Patch tokens z</text>
+<path d="M 792 268 H 878" fill="none" stroke="#3C5488" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#aN)"/>
+<text x="967" y="177" font-size="22" fill="#667383" font-weight="400" text-anchor="middle">Target queries</text>
+<text x="967" y="204" font-size="22" fill="#667383" font-weight="400" text-anchor="middle">+ positions</text>
+<path d="M 967 211 V 222" fill="none" stroke="#8491B4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#aS)" stroke-dasharray="4 5"/>
+<rect x="878" y="222" width="179" height="92" rx="11" fill="#EEF2F8" stroke="#3C5488" stroke-width="2"/>
+<text x="967" y="260" font-size="26" fill="#3C5488" font-weight="600" text-anchor="middle">Predictor</text>
+<text x="967" y="292" font-size="23" fill="#3C5488" font-weight="400" text-anchor="middle">gφ · trainable</text>
+<path d="M 1057 268 H 1104" fill="none" stroke="#3C5488" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#aN)"/>
+<rect x="1109" y="233" width="20" height="20" rx="2" fill="#D7E2F1" stroke="#3C5488" stroke-width="1.2"/>
+<rect x="1134" y="233" width="20" height="20" rx="2" fill="#A4B8D5" stroke="#3C5488" stroke-width="1.2"/>
+<rect x="1159" y="233" width="20" height="20" rx="2" fill="white" stroke="#DDE4EA" stroke-width="1.2"/>
+<rect x="1109" y="258" width="20" height="20" rx="2" fill="#A4B8D5" stroke="#3C5488" stroke-width="1.2"/>
+<rect x="1134" y="258" width="20" height="20" rx="2" fill="white" stroke="#DDE4EA" stroke-width="1.2"/>
+<rect x="1159" y="258" width="20" height="20" rx="2" fill="white" stroke="#DDE4EA" stroke-width="1.2"/>
+<rect x="1109" y="283" width="20" height="20" rx="2" fill="white" stroke="#DDE4EA" stroke-width="1.2"/>
+<rect x="1134" y="283" width="20" height="20" rx="2" fill="white" stroke="#DDE4EA" stroke-width="1.2"/>
+<rect x="1159" y="283" width="20" height="20" rx="2" fill="#A4B8D5" stroke="#3C5488" stroke-width="1.2"/>
+<text x="1144" y="341" font-size="21" fill="#3C5488" font-weight="600" text-anchor="middle">Predicted targets</text>
+<path d="M 1182 268 H 1233 V 405 H 1307" fill="none" stroke="#3C5488" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#aN)"/>
+<path d="M 831 268 V 428 H 857" fill="none" stroke="#E64B35" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#aC)"/>
+<circle cx="831" cy="268" r="3.8" fill="#E64B35" stroke="none"/>
+<rect x="857" y="391" width="341" height="76" rx="10" fill="#FFF7F3" stroke="#ECA191" stroke-width="1.7"/>
+<text x="1027" y="420" font-size="21" fill="#E64B35" font-weight="600" text-anchor="middle">TexJEPA-C only · auxiliary loss</text>
+<text x="1027" y="449" font-size="24" fill="#E64B35" font-weight="400" text-anchor="middle">Lvar(z) + 0.04 Lcov(z)</text>
+<path d="M 576 314 V 505" fill="none" stroke="#00A087" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#aT)" stroke-dasharray="7 7"/>
+<rect x="551" y="382" width="50" height="54" rx="0" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="0"/>
+<text x="612" y="402" font-size="23" fill="#00A087" font-weight="600" text-anchor="start">EMA</text>
+<text x="612" y="429" font-size="23" fill="#00A087" font-weight="400" text-anchor="start">θ → ξ</text>
+<text x="353" y="530" font-size="23" fill="#00A087" font-weight="600" text-anchor="middle">Full clean image</text>
+<rect x="486" y="505" width="181" height="92" rx="11" fill="#ECF7F3" stroke="#00A087" stroke-width="2"/>
+<text x="576" y="540" font-size="22" fill="#00A087" font-weight="600" text-anchor="middle">Target encoder</text>
+<text x="576" y="574" font-size="22" fill="#00A087" font-weight="400" text-anchor="middle">fξ · no gradient</text>
+<path d="M 667 551 H 714" fill="none" stroke="#00A087" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#aT)"/>
+<rect x="719" y="516" width="20" height="20" rx="2" fill="#D9F0E9" stroke="#00A087" stroke-width="1.2"/>
+<rect x="744" y="516" width="20" height="20" rx="2" fill="#94D6C7" stroke="#00A087" stroke-width="1.2"/>
+<rect x="769" y="516" width="20" height="20" rx="2" fill="#49B59E" stroke="#00A087" stroke-width="1.2"/>
+<rect x="719" y="541" width="20" height="20" rx="2" fill="#94D6C7" stroke="#00A087" stroke-width="1.2"/>
+<rect x="744" y="541" width="20" height="20" rx="2" fill="#49B59E" stroke="#00A087" stroke-width="1.2"/>
+<rect x="769" y="541" width="20" height="20" rx="2" fill="#D9F0E9" stroke="#00A087" stroke-width="1.2"/>
+<rect x="719" y="566" width="20" height="20" rx="2" fill="#49B59E" stroke="#00A087" stroke-width="1.2"/>
+<rect x="744" y="566" width="20" height="20" rx="2" fill="#D9F0E9" stroke="#00A087" stroke-width="1.2"/>
+<rect x="769" y="566" width="20" height="20" rx="2" fill="#94D6C7" stroke="#00A087" stroke-width="1.2"/>
+<text x="754" y="625" font-size="21" fill="#00A087" font-weight="600" text-anchor="middle">Full patch grid</text>
+<path d="M 792 551 H 878" fill="none" stroke="#00A087" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#aT)"/>
+<rect x="878" y="505" width="179" height="92" rx="11" fill="#ECF7F3" stroke="#00A087" stroke-width="2"/>
+<text x="967" y="539" font-size="24" fill="#00A087" font-weight="600" text-anchor="middle">LayerNorm</text>
+<text x="967" y="575" font-size="22" fill="#00A087" font-weight="400" text-anchor="middle">Select targets</text>
+<path d="M 1057 551 H 1104" fill="none" stroke="#00A087" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#aT)"/>
+<rect x="1109" y="516" width="20" height="20" rx="2" fill="#D9F0E9" stroke="#00A087" stroke-width="1.2"/>
+<rect x="1134" y="516" width="20" height="20" rx="2" fill="#94D6C7" stroke="#00A087" stroke-width="1.2"/>
+<rect x="1159" y="516" width="20" height="20" rx="2" fill="white" stroke="#DDE4EA" stroke-width="1.2"/>
+<rect x="1109" y="541" width="20" height="20" rx="2" fill="#94D6C7" stroke="#00A087" stroke-width="1.2"/>
+<rect x="1134" y="541" width="20" height="20" rx="2" fill="white" stroke="#DDE4EA" stroke-width="1.2"/>
+<rect x="1159" y="541" width="20" height="20" rx="2" fill="white" stroke="#DDE4EA" stroke-width="1.2"/>
+<rect x="1109" y="566" width="20" height="20" rx="2" fill="white" stroke="#DDE4EA" stroke-width="1.2"/>
+<rect x="1134" y="566" width="20" height="20" rx="2" fill="white" stroke="#DDE4EA" stroke-width="1.2"/>
+<rect x="1159" y="566" width="20" height="20" rx="2" fill="#94D6C7" stroke="#00A087" stroke-width="1.2"/>
+<text x="1144" y="625" font-size="22" fill="#00A087" font-weight="600" text-anchor="middle">Stop-gradient</text>
+<path d="M 1182 551 H 1268 V 453 H 1307" fill="none" stroke="#00A087" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#aT)"/>
+<rect x="1307" y="374" width="207" height="106" rx="12" fill="#F8F8F6" stroke="#B9C3CE" stroke-width="1.7"/>
+<text x="1410" y="418" font-size="29" fill="#24364A" font-weight="600" text-anchor="middle">Smooth-L1</text>
+<text x="1410" y="451" font-size="21" fill="#667383" font-weight="400" text-anchor="middle">mean over blocks</text>
+<text x="1410" y="518" font-size="20" fill="#24364A" font-weight="400" text-anchor="middle">Predict clean latents</text>
+<text x="1410" y="545" font-size="20" fill="#24364A" font-weight="400" text-anchor="middle">from noisy context</text>
+<rect x="28" y="700" width="805" height="318" rx="16" fill="#FFFFFF" stroke="#DDE4EA" stroke-width="1.7"/>
+<text x="57" y="746" font-size="32" fill="#3C5488" font-weight="700" text-anchor="start">b</text>
+<text x="99" y="746" font-size="31" fill="#24364A" font-weight="700" text-anchor="start">One objective, three variants</text>
+<rect x="54" y="837" width="154" height="84" rx="11" fill="#F4F6F9" stroke="#8491B4" stroke-width="1.7"/>
+<text x="131" y="870" font-size="24" fill="#3C5488" font-weight="600" text-anchor="middle">I-JEPA</text>
+<text x="131" y="902" font-size="25" fill="#3C5488" font-weight="400" text-anchor="middle">H/201</text>
+<path d="M 208 879 H 248" fill="none" stroke="#3C5488" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#aN)"/>
+<rect x="248" y="817" width="182" height="125" rx="11" fill="#F0F8FB" stroke="#4DBBD5" stroke-width="1.9"/>
+<text x="339" y="852" font-size="22" fill="#3C5488" font-weight="600" text-anchor="middle">TexJEPA-N · v4</text>
+<text x="339" y="883" font-size="22" fill="#3C5488" font-weight="400" text-anchor="middle">Noisy context</text>
+<text x="339" y="916" font-size="22" fill="#667383" font-weight="400" text-anchor="middle">epoch 50</text>
+<path d="M 430 879 H 466 V 831 H 511" fill="none" stroke="#3C5488" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#aN)"/>
+<path d="M 466 879 V 946 H 511" fill="none" stroke="#E64B35" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#aC)"/>
+<circle cx="466" cy="879" r="4.2" fill="#3C5488" stroke="none"/>
+<rect x="511" y="778" width="291" height="109" rx="11" fill="#ECF7F3" stroke="#00A087" stroke-width="1.9"/>
+<text x="656" y="811" font-size="25" fill="#3C5488" font-weight="600" text-anchor="middle">TexJEPA-R · v5</text>
+<rect x="537" y="832" width="13" height="20" rx="2" fill="#BDE5D9" stroke="#00A087" stroke-width="1.1"/>
+<rect x="556" y="832" width="13" height="20" rx="2" fill="#BDE5D9" stroke="#00A087" stroke-width="1.1"/>
+<rect x="575" y="832" width="13" height="20" rx="2" fill="#BDE5D9" stroke="#00A087" stroke-width="1.1"/>
+<rect x="594" y="832" width="13" height="20" rx="2" fill="#BDE5D9" stroke="#00A087" stroke-width="1.1"/>
+<text x="700" y="850" font-size="22" fill="#3C5488" font-weight="400" text-anchor="middle">4 registers</text>
+<text x="656" y="875" font-size="22" fill="#3C5488" font-weight="400" text-anchor="middle">Tighter masking</text>
+<rect x="511" y="908" width="291" height="79" rx="11" fill="#FFF6F1" stroke="#ECA191" stroke-width="1.9"/>
+<text x="656" y="939" font-size="25" fill="#E64B35" font-weight="600" text-anchor="middle">TexJEPA-C · v6</text>
+<text x="656" y="971" font-size="23" fill="#E64B35" font-weight="400" text-anchor="middle">Patch regularization</text>
+<rect x="857" y="700" width="715" height="318" rx="16" fill="#FFFFFF" stroke="#DDE4EA" stroke-width="1.7"/>
+<text x="885" y="746" font-size="32" fill="#3C5488" font-weight="700" text-anchor="start">c</text>
+<text x="927" y="746" font-size="31" fill="#24364A" font-weight="700" text-anchor="start">Evaluate distinct behaviors</text>
+<rect x="882" y="849" width="131" height="80" rx="11" fill="#EEF2F8" stroke="#3C5488" stroke-width="1.9"/>
+<text x="947" y="883" font-size="23" fill="#3C5488" font-weight="600" text-anchor="middle">Learned</text>
+<text x="947" y="912" font-size="23" fill="#3C5488" font-weight="600" text-anchor="middle">encoder</text>
+<path d="M 1013 880 H 1046 V 798 H 1096" fill="none" stroke="#3C5488" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#aN)"/>
+<path d="M 1046 880 H 1087" fill="none" stroke="#3C5488" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#aN)"/>
+<circle cx="1046" cy="880" r="4.0" fill="#3C5488" stroke="none"/>
+<rect x="1107" y="784" width="8" height="20" rx="1" fill="#B8E4EE" stroke="#4DBBD5" stroke-width="1"/>
+<rect x="1121" y="773" width="8" height="31" rx="1" fill="#B8E4EE" stroke="#4DBBD5" stroke-width="1"/>
+<rect x="1135" y="792" width="8" height="12" rx="1" fill="#B8E4EE" stroke="#4DBBD5" stroke-width="1"/>
+<rect x="1149" y="778" width="8" height="26" rx="1" fill="#B8E4EE" stroke="#4DBBD5" stroke-width="1"/>
+<text x="1300" y="799" font-size="25" fill="#3C5488" font-weight="600" text-anchor="middle">Cosine drift</text>
+<text x="1300" y="826" font-size="21" fill="#667383" font-weight="400" text-anchor="middle">clean ↔ perturbed features</text>
+<rect x="1087" y="849" width="157" height="61" rx="10" fill="#F2F6FA" stroke="#3C5488" stroke-width="1.6"/>
+<text x="1165" y="888" font-size="24" fill="#3C5488" font-weight="600" text-anchor="middle">Probe head</text>
+<path d="M 1244 880 H 1291" fill="none" stroke="#3C5488" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#aN)"/>
+<rect x="1303" y="881" width="11" height="14" rx="1" fill="#C2DFE7" stroke="#4DBBD5" stroke-width="1"/>
+<rect x="1320" y="869" width="11" height="26" rx="1" fill="#84C4D5" stroke="#4DBBD5" stroke-width="1"/>
+<rect x="1337" y="859" width="11" height="36" rx="1" fill="#4DBBD5" stroke="#4DBBD5" stroke-width="1"/>
+<text x="1430" y="888" font-size="25" fill="#3C5488" font-weight="600" text-anchor="middle">AUROC</text>
+<path d="M 1165 910 V 932" fill="none" stroke="#3C5488" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#aN)"/>
+<g transform="translate(1134 933) scale(0.5535714285714286)">
+<rect x="0" y="0" width="112" height="112" rx="7" fill="#F5F7F7" stroke="#BFCBD5" stroke-width="1.6"/>
+<path d="M 50 15 C 39 11 19 31 17 58 C 14 82 24 97 43 98 C 50 91 49 74 50 58 Z M 62 15 C 73 11 93 31 95 58 C 98 82 88 97 69 98 C 61 91 63 74 62 58 Z" fill="#E4EBEE" stroke="#8491B4" stroke-width="1.7"/>
+<path d="M 56 10 L 56 90 M 56 22 L 42 36 M 56 22 L 70 36" stroke="#8491B4" stroke-width="2" fill="none"/>
+<path d="M 21 32 Q 36 22 49 33 M 63 33 Q 76 22 91 32" fill="none" stroke="#B5C2CC" stroke-width="1.3"/>
+<path d="M 21 43 Q 36 33 49 44 M 63 44 Q 76 33 91 43" fill="none" stroke="#B5C2CC" stroke-width="1.3"/>
+<path d="M 21 54 Q 36 44 49 55 M 63 55 Q 76 44 91 54" fill="none" stroke="#B5C2CC" stroke-width="1.3"/>
+<path d="M 21 65 Q 36 55 49 66 M 63 66 Q 76 55 91 65" fill="none" stroke="#B5C2CC" stroke-width="1.3"/>
+<path d="M 21 76 Q 36 66 49 77 M 63 77 Q 76 66 91 76" fill="none" stroke="#B5C2CC" stroke-width="1.3"/>
+<rect x="23" y="54" width="29" height="24" rx="0" fill="#FBE7E2" stroke="#E64B35" stroke-width="2"/>
+</g>
+<text x="1252" y="973" font-size="31" fill="#667383" font-weight="400" text-anchor="middle">−</text>
+<rect x="1300" y="947" width="17" height="17" rx="2" fill="#E7F3EF" stroke="#00A087" stroke-width="1.3"/>
+<rect x="1322" y="947" width="17" height="17" rx="2" fill="#E7F3EF" stroke="#00A087" stroke-width="1.3"/>
+<rect x="1344" y="947" width="17" height="17" rx="2" fill="#E7F3EF" stroke="#00A087" stroke-width="1.3"/>
+<rect x="1366" y="947" width="17" height="17" rx="2" fill="#E7F3EF" stroke="#00A087" stroke-width="1.3"/>
+<rect x="1388" y="947" width="17" height="17" rx="2" fill="#E7F3EF" stroke="#00A087" stroke-width="1.3"/>
+<text x="1463" y="949" font-size="20" fill="#00A087" font-weight="400" text-anchor="middle">mean of 5</text>
+<text x="1463" y="974" font-size="20" fill="#00A087" font-weight="400" text-anchor="middle">controls</text>
+<text x="1354" y="1002" font-size="22" fill="#24364A" font-weight="400" text-anchor="middle">Lesion-aligned logit drop</text>
+<path d="M 49 1050 H 95" fill="none" stroke="#3C5488" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#aN)"/>
+<text x="109" y="1057" font-size="20" fill="#667383" font-weight="400" text-anchor="start">Image / feature flow</text>
+<path d="M 369 1050 H 415" fill="none" stroke="#00A087" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#aT)" stroke-dasharray="6 6"/>
+<text x="429" y="1057" font-size="20" fill="#667383" font-weight="400" text-anchor="start">EMA update · no target gradient</text>
+<path d="M 855 1050 H 899" fill="none" stroke="#E64B35" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#aC)"/>
+<text x="913" y="1057" font-size="20" fill="#667383" font-weight="400" text-anchor="start">Variant-specific regularization</text>
+<text x="1552" y="1057" font-size="19" fill="#667383" font-weight="400" text-anchor="end">Images are schematic</text>
+</g></svg>
