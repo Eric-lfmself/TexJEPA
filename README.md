@@ -15,6 +15,8 @@
   <a href="#documentation">Documentation</a>
 </p>
 
+**All rights reserved.** We make this research preview publicly viewable while the manuscript is under development. Reuse of our protected code, figures, and other materials requires prior written permission, subject to the exceptions in [LICENSE](LICENSE).
+
 **Clean accuracy tells only part of the story.** We study how chest X-ray encoders use radiographic texture: sensitivity to fine lesion detail can also make a representation fragile to image noise. TexJEPA combines controlled diagnostics with three I-JEPA post-training variants to examine the balance between classification, noise robustness, and lesion sensitivity.
 
 ![TexJEPA framework: a trainable noisy-context encoder predicts clean EMA target representations; post-training branches into noise, register, and variance/covariance variants, followed by classification, drift, and lesion diagnostics.](docs/assets/framework.svg)
@@ -88,6 +90,8 @@ All **13 tables**, **26 supplementary records**, and **90 Figure 4 annotations**
 
 ## Quick start
 
+The instructions below are for users with the required permission under [LICENSE](LICENSE); they do not grant reuse or execution rights.
+
 **Linux or macOS · Python 3.11+ · no dataset or pretrained weights needed**
 
 ### 1. Get the code and inspect the results
@@ -121,6 +125,8 @@ python -m pytest
 Figure generation reads the committed experimental values. Neither command downloads medical images or model weights. For GPU experiments, install a PyTorch build appropriate to the execution machine before installing the package.
 
 ## Run an experiment
+
+These procedures are for authorized use under [LICENSE](LICENSE).
 
 We support native **I-JEPA / MAE pretraining**, **TexJEPA post-training**, and downstream evaluation through local **I-JEPA, MAE, EVA-X, RAD-DINO, and custom backbone adapters**. Evaluation includes linear and MLP probes, partial fine-tuning, image and token drift, lesion occlusion, frequency interventions, input smoothing, and noise-consistency adapters.
 
@@ -168,8 +174,10 @@ tests/          Synthetic CPU tests
 
 </details>
 
-## Availability and citation
+## Rights, availability, and citation
 
-We release code and aggregate experimental results for *When Texture Becomes the World: Texture-aware JEPA for Chest X-ray Representation Learning*. The manuscript remains private and unsubmitted. The results package preserves the displayed values, source locations, and precision; it contains aggregate measurements rather than per-image predictions or training logs. Chest radiographs and pretrained checkpoints are not bundled; access links are listed in [Sources](docs/SOURCES.md).
+We make code and aggregate experimental results publicly viewable for *When Texture Becomes the World: Texture-aware JEPA for Chest X-ray Representation Learning*. The manuscript remains private and unsubmitted. The results package preserves the displayed values, source locations, and precision; it contains aggregate measurements rather than per-image predictions or training logs. Chest radiographs and pretrained checkpoints are not bundled; access links are listed in [Sources](docs/SOURCES.md).
 
 A provisional title-based citation is available in [CITATION.bib](CITATION.bib). For questions about the code or results, [open an issue](https://github.com/Eric-lfmself/TexJEPA/issues).
+
+We reserve all rights in our original protected materials under [LICENSE](LICENSE). Academic and commercial reuse require prior written permission; citation alone is not permission. [Third-party notices](THIRD_PARTY_NOTICES.md) preserve the separate terms of upstream materials.

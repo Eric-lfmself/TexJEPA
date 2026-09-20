@@ -1,6 +1,8 @@
 # Historical results from our TexJEPA manuscript
 
-We release the aggregate results from our historical experiments alongside our implementation for studying texture sensitivity in chest X-ray representations. The source is our **unsubmitted manuscript**, *When Texture Becomes the World: Texture-aware JEPA for Chest X-ray Representation Learning*. Our manuscript is not distributed in this repository.
+**Rights and reuse.** Our original figures, text, and protectable presentation of these results are subject to [LICENSE](../../LICENSE). Reuse requires prior written permission unless an exception in that notice applies. Citation alone does not grant permission.
+
+We present the aggregate results from our historical experiments alongside our implementation for studying texture sensitivity in chest X-ray representations. The source is our **unsubmitted manuscript**, *When Texture Becomes the World: Texture-aware JEPA for Chest X-ray Representation Learning*. Our manuscript is not distributed in this repository.
 
 We transcribe every table, including the experimental protocols and qualitative interpretations, and preserve the precision displayed in the manuscript. These files contain aggregate results; they do not contain patient images, patient-level predictions, or model weights.
 

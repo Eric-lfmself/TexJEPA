@@ -1,0 +1,81 @@
+TexJEPA Proprietary Notice — All Rights Reserved
+
+Copyright (c) 2026 Eric Liu (GitHub: Eric-lfmself). All rights reserved.
+
+1. Scope and ownership
+
+We make this repository publicly viewable to present our ongoing research.
+This is a proprietary research preview. We reserve all rights we own in the
+original source code, documentation, illustrations, figures, and protectable
+selection, arrangement, and presentation of experimental results contained in
+this repository (the "Materials"). This notice covers only rights that we own
+or are authorized to control. It does not grant an open-source license.
+Publication of an associated manuscript does not itself change these terms or
+grant permission to reuse the Materials.
+
+2. Prior written permission required
+
+Subject to Sections 4 and 5, we grant no permission to use, execute, reproduce,
+modify, translate, adapt, create derivative works from, redistribute, publish,
+sublicense, sell, or otherwise exploit the Materials without our prior written
+permission. This applies to commercial and noncommercial activities alike,
+including research, education, product development, incorporation into another
+repository or publication, and inclusion in training or evaluation corpora.
+
+Public availability, access to source code, installation instructions, example
+commands, citation information, and the ability to download or fork do not
+provide additional permission. Documentation describes technical procedures
+for authorized users; it does not grant a license to carry them out.
+
+3. Attribution, provenance, and citation
+
+We do not authorize presenting the Materials as someone else's original work,
+removing or obscuring copyright or provenance notices, or implying our
+endorsement, affiliation, or sponsorship. Where reuse is separately authorized,
+retain applicable notices and identify modifications, unless the written
+permission expressly provides otherwise.
+
+Citation or acknowledgment alone does not authorize reuse of protected
+Materials. You may link to and accurately cite this repository; that does not
+confer permission to copy its code, figures, or other protected expression.
+We do not grant any patent or trademark license under this notice.
+
+4. Platform rights, applicable law, and existing permissions
+
+Nothing in this notice restricts rights already granted under GitHub's
+applicable Terms of Service, including the rights of GitHub and its affiliates
+and the rights of users to view and fork public repositories through the
+Service. This notice grants no additional rights beyond those platform terms.
+
+Nothing in this notice limits rights or exceptions available under applicable
+law, including fair use, fair dealing, or lawful quotation. We do not claim
+exclusive copyright in facts, ideas, scientific methods, or independently
+created expression. This notice does not retroactively revoke rights validly
+granted under a prior or separate license or written agreement.
+
+5. Third-party materials
+
+Third-party code, libraries, fonts, datasets, pretrained models, trademarks,
+and other third-party materials remain subject to their respective ownership
+and license terms. They are not relicensed by this notice. See
+THIRD_PARTY_NOTICES.md and any notices accompanying the relevant materials.
+References or links to third-party resources do not transfer their rights to
+us or grant permission to use them.
+
+6. Permission requests
+
+Request permission from Eric Liu through the contact information provided on
+https://github.com/Eric-lfmself or through an issue in this repository.
+Permission must be provided in writing and identify the Materials and scope
+of the authorized use. A request, silence, citation, acknowledgment, or informal
+technical assistance does not itself constitute permission. We reserve the
+right to decline requests or offer separate written terms.
+
+7. No warranty; limitation of liability
+
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, THE MATERIALS ARE PROVIDED
+"AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING WARRANTIES
+OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.
+TO THE SAME EXTENT, WE SHALL NOT BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER
+LIABILITY ARISING FROM OR IN CONNECTION WITH THE MATERIALS OR THEIR USE.
+Nothing in this section excludes liability that cannot lawfully be excluded.

@@ -292,6 +292,8 @@ def _create_local(spec):
                    "source_python_tree_sha256": source_hash, "source_python_file_count": len(source_manifest)}
 
 
+# Adapted from EVA-X checkpoint_filter_fn (Apache-2.0); see THIRD_PARTY_NOTICES.md.
+# Modified to convert keys only, record changes, and reject conversion collisions.
 def _eva_x_convert(state):
     """Explicit key-only subset of hustvl/EVA-X/eva_x.py checkpoint_filter_fn.
 
